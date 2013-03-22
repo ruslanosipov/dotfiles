@@ -15,6 +15,34 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # ------------------------------------------------------------------------------
+# FUNCTIONS
+# ------------------------------------------------------------------------------
+
+##
+# Set current prompt style
+#
+# Available styles to pick from:
+# 0 "user@host:dir$ ", no color
+# 1 "user@host dir (git branch) $ ", colorful and bold
+# 2 " dir (git branch) $ ", colorful and bold
+#
+# @param [int] prompt style ID (0-2)
+set_prompt() {
+    [[ -z "$1" ]] && printf "Usage: set_prompt [ID]\n" && return 10
+    if [ "$1" == 0 ]; then
+        prompt='\u@\h:\w\$ '
+    elif [ "$1" == 1 ]; then
+        prompt='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]'
+        prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    elif [ "$1" == 2 ]; then
+        prompt='\[\033[01;34m\] \w\[\033[01;33m\]'
+        prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    fi
+
+    PS1=$prompt
+}
+
+# ------------------------------------------------------------------------------
 # ENVIRONMENT CONFIGURATION
 # ------------------------------------------------------------------------------
 
@@ -37,17 +65,5 @@ export EDITOR=vim
 # PROMPT
 # ------------------------------------------------------------------------------
 
-# choose current prompt type
-PSTYPE=2
-
-if [ "$PSTYPE" == 0 ]; then
-    prompt='\u@\h:\w\$ '
-elif [ "$PSTYPE" == 1 ]; then
-    prompt='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]'
-    prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-elif [ "$PSTYPE" == 2 ]; then
-    prompt='\[\033[01;34m\] \w\[\033[01;33m\]'
-    prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-fi
-
-PS1=$prompt
+# choose current prompt style (see set_prompt for details)
+set_prompt 2

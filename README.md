@@ -16,6 +16,8 @@ Replaced dotfiles are saved at ~/dotfiles-backup
 
 ## What's inside
 
+`set_prompt()` allows switching between pre-configured PS1 (bash prompt) styles on the go, see `.bash_profile` for usage.
+
 Vim plugins:
 * `pathogen` for plugin version control
 * `git.vim` for using git without exiting vim
