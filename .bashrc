@@ -64,6 +64,9 @@ export TERM='xterm-256color'
 # text editor
 export EDITOR=vim
 
+# put ~/bin on PATH if it exists
+test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
+
 # ------------------------------------------------------------------------------
 # PROMPT
 # ------------------------------------------------------------------------------
