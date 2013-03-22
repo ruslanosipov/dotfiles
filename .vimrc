@@ -1,4 +1,12 @@
 """""""""""""""""""""""""""""""""""""""
+" => Pre-load
+"""""""""""""""""""""""""""""""""""""""
+
+" Pathogen: load and infect
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""
 " => Editing
 """""""""""""""""""""""""""""""""""""""
 
@@ -86,10 +94,6 @@ endif
 """""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""
-
-" Pathogen: load and infect
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
 
 " EasyMotion: one leader key instead of two
 let g:EasyMotion_leader_key = '<Leader>'
