@@ -98,11 +98,13 @@ endif
 " EasyMotion: one leader key instead of two
 let g:EasyMotion_leader_key = '<Leader>'
 
-" NERDTree: auto open and close
-" if !&diff
-"   autocmd VimEnter * NERDTree
-"   autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-" endif
+" NERDTree: auto open if terminal is wide enough
+if !&diff && &co > 120
+  autocmd VimEnter * NERDTree
+endif
+
+" NERDTree: close if only NERDTree left
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " NERDTree: focus on text window (left)
 autocmd VimEnter * wincmd l
