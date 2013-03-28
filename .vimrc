@@ -56,8 +56,10 @@ set ruler
 set wildmenu
 set wildmode=list:longest,full
 
-" Display line numbers
-set nu
+" Display line numbers if terminal is wide enough
+if &co > 80
+  set nu
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " => Misc
