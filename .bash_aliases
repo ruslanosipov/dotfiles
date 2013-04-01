@@ -19,3 +19,4 @@ alias l='ls -CF'
 # misc
 alias xclip="xclip -selection c"
 alias ping="ping -c 5"
+alias r="fc -s"
