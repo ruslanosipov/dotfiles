@@ -10,7 +10,7 @@ execute pathogen#infect()
 " => Editing
 """""""""""""""""""""""""""""""""""""""
 
-syntax on
+syntax off
 
 " Indentation settings
 set tabstop=4
@@ -32,8 +32,8 @@ set smartcase
 " => Looks
 """""""""""""""""""""""""""""""""""""""
 
-colorscheme darkburn
-set background=dark
+set background=light
+colorscheme solarized
 
 " Set terminal window title
 set title

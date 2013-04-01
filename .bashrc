@@ -40,6 +40,8 @@ set_prompt() {
     elif [ "$1" == 2 ]; then
         prompt='\[\033[01;34m\] \w\[\033[01;33m\]'
         prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    elif [ "$1" == 3 ]; then
+        prompt='\w$ '
     fi
 
     PS1=$prompt
@@ -72,4 +74,4 @@ test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 # ------------------------------------------------------------------------------
 
 # choose current prompt style (see set_prompt for details)
-set_prompt 2
+set_prompt 3
