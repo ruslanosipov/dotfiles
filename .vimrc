@@ -32,7 +32,7 @@ set smartcase
 " => Looks
 """""""""""""""""""""""""""""""""""""""
 
-set background=light
+set background=dark
 colorscheme solarized
 
 " Set terminal window title
