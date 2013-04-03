@@ -9,8 +9,17 @@ This repository hosts my personal dotfiles in order to synchronize latest betwee
     git submodule update --init
     ./symlink.sh
     source ~/.bashrc
+    touch ~/.gitconfig.local
 
-Replaced dotfiles are saved at ~/dotfiles-backup
+Edit `~/.gitconfig.local` and add following:
+
+    [user]
+        name = your name
+        email = your email
+
+You can also add some user-specific settings in this file to override any settings specified in `.gitconfig`.
+
+Replaced dotfiles are saved at `~/dotfiles-backup/`
 
     rm -rf ~/dotfiles-backup
 

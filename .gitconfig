@@ -1,0 +1,25 @@
+[include]
+	path = ~/.gitconfig.local
+[color]
+	ui = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[core]
+	editor = vim
+	autocrlf = false
+[alias]
+	st = status
+	cm = commit -m
+	p = push
+	pr = pull --rebase
+	sh = stash
+	sp = stash pop
+	sa = stash apply
+	d = difftool
+	cp = cherry-pick
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
