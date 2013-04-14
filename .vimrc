@@ -10,7 +10,7 @@ execute pathogen#infect()
 " => Editing
 """""""""""""""""""""""""""""""""""""""
 
-syntax off
+syntax on
 
 " Indentation settings
 set tabstop=4

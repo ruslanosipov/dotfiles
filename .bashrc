@@ -74,4 +74,4 @@ test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 # ------------------------------------------------------------------------------
 
 # choose current prompt style (see set_prompt for details)
-set_prompt 3
+set_prompt 1
