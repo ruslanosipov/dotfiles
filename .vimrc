@@ -65,6 +65,12 @@ endif
 " => Misc
 """""""""""""""""""""""""""""""""""""""
 
+" Fast split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Use Unix as the standart file type
 set ffs=unix,dos,mac
 
