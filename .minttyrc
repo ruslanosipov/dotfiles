@@ -3,7 +3,7 @@ FontHeight=11
 Term=xterm-256color
 FontSmoothing=full
 Font=Consolas
-Columns=150
+Columns=100
 Rows=30
 CursorType=block
 
