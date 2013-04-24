@@ -2,7 +2,7 @@
 [ -z "$PS1" ] && return
 
 # ------------------------------------------------------------------------------
-# INCLUDES
+# INCLUDES {{{1
 # ------------------------------------------------------------------------------
 
 if [ -f /etc/bash_completion ]; then
@@ -18,7 +18,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # ------------------------------------------------------------------------------
-# FUNCTIONS
+# FUNCTIONS {{{1
 # ------------------------------------------------------------------------------
 
 ##
@@ -28,7 +28,8 @@ fi
 # 0 "user@host:dir$ ", no color
 # 1 "user@host dir (git branch) $ ", colorful and bold
 # 2 "dir (git branch) $ ", colorful and bold
-# 3 "dir# ", no color
+# 3 "dir$ ", no color
+# 4 same as 1, but user@host replaced with ~/.username cat
 #
 # @param [int] prompt style ID (0-2)
 set_prompt() {
@@ -43,13 +44,23 @@ set_prompt() {
         prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
     elif [ "$1" == 3 ]; then
         prompt='\w$ '
+    elif [ "$1" == 4 ]; then
+        if [ -f ~/.username ]; then
+            prompt='\[\033[01;32m\]$(cat ~/.username)'
+            prompt+='\[\033[01;34m\] \w\[\033[01;33m\]'
+            prompt+='$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+        else
+            printf "Can't find ~/.username file!\n" && return 10
+        fi
     fi
 
     PS1=$prompt
 }
 
+export -f set_prompt
+
 # ------------------------------------------------------------------------------
-# ENVIRONMENT CONFIGURATION
+# ENVIRONMENT CONFIGURATION {{{1
 # ------------------------------------------------------------------------------
 
 # history settings
@@ -71,8 +82,16 @@ export EDITOR=vim
 test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 
 # ------------------------------------------------------------------------------
-# PROMPT
+# PROMPT {{{1
 # ------------------------------------------------------------------------------
 
 # choose current prompt style (see set_prompt for details)
 set_prompt 2
+
+# ------------------------------------------------------------------------------
+# INCLUDE LOCAL CONFIG {{{1
+# ------------------------------------------------------------------------------
+
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
