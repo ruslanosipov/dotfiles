@@ -2,15 +2,14 @@ BoldAsFont=no
 FontHeight=11
 Term=xterm-256color
 FontSmoothing=full
+Scrollbar=None
 Font=Consolas
 Columns=100
 Rows=30
 CursorType=block
-
 ForegroundColour=131, 148, 150
 BackgroundColour=  0,   0,   0
 CursorColour=    220,  50,  47
-
 Black=             7,  54,  66
 BoldBlack=         0,  43,  54
 Red=             220,  50,  47

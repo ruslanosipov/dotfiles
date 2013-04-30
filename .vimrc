@@ -9,6 +9,7 @@
 " Pathogen: load and infect
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+execute pathogen#helptags()
 
 "------------------------------------------------------------------------------
 " => Editing {{{1
