@@ -18,6 +18,7 @@
 	d = difftool
 	cp = cherry-pick
 	show-files = "!f() { git diff-tree --no-commit-id --name-only -r $1; }; f"
+    show-diff = "!f() { git difftool $1^ $1; }; f"
 [merge]
 	tool = vimdiff
 [mergetool]
