@@ -17,6 +17,7 @@
 	sa = stash apply
 	d = difftool
 	cp = cherry-pick
+	show-files = "!f() { git diff-tree --no-commit-id --name-only -r $1; }; f"
 [merge]
 	tool = vimdiff
 [mergetool]
