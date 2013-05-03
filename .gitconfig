@@ -7,6 +7,8 @@
 [core]
 	editor = vim
 	autocrlf = false
+[push]
+    default = current
 [alias]
 	st = status
 	cm = commit -m
