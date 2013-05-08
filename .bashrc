@@ -52,6 +52,9 @@ set_prompt() {
         else
             printf "Can't find ~/.username file!\n" && return 10
         fi
+    elif [ "$1" == 5 ]; then
+        prompt='\[\033[01;32m\]$(cat ~/.username)'
+        prompt+='\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
     fi
 
     PS1=$prompt
@@ -67,6 +70,9 @@ export -f set_prompt
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=10000
 HISTFILESIZE=20000
+
+# write history after every command
+export PROMPT_COMMAND='history -a'
 
 # shell opts
 shopt -s histappend
