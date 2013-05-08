@@ -33,6 +33,9 @@ set noswapfile
 set ignorecase
 set smartcase
 
+" Linewrap for git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 "------------------------------------------------------------------------------
 " => Looks {{{1
 "------------------------------------------------------------------------------
