@@ -1,27 +1,27 @@
-[submodule ".vim/bundle/ScrollColors"]
-	path = .vim/bundle/ScrollColors
+[submodule "vim/bundle/ScrollColors"]
+	path = vim/bundle/ScrollColors
 	url = git@github.com:vim-scripts/ScrollColors.git
-[submodule ".vim/bundle/git-vim"]
-	path = .vim/bundle/git-vim
+[submodule "vim/bundle/git-vim"]
+	path = vim/bundle/git-vim
 	url = git@github.com:motemen/git-vim.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
-[submodule ".vim/bundle/pydoc.vim"]
-	path = .vim/bundle/pydoc.vim
+[submodule "vim/bundle/pydoc.vim"]
+	path = vim/bundle/pydoc.vim
 	url = git@github.com:fs111/pydoc.vim.git
-[submodule ".vim/bundle/tcomment_vim"]
-	path = .vim/bundle/tcomment_vim
+[submodule "vim/bundle/tcomment_vim"]
+	path = vim/bundle/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim.git
-[submodule ".vim/bundle/vim-easymotion"]
-	path = .vim/bundle/vim-easymotion
+[submodule "vim/bundle/vim-easymotion"]
+	path = vim/bundle/vim-easymotion
 	url = git@github.com:Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/Colour-Sampler-Pack"]
-	path = .vim/bundle/Colour-Sampler-Pack
+[submodule "vim/bundle/Colour-Sampler-Pack"]
+	path = vim/bundle/Colour-Sampler-Pack
 	url = git@github.com:vim-scripts/Colour-Sampler-Pack.git
-[submodule ".vim/bundle/vim-pathogen"]
-	path = .vim/bundle/vim-pathogen
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
 	url = git@github.com:tpope/vim-pathogen.git
-[submodule ".vim/bundle/ctrlp"]
-	path = .vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = git@github.com:kien/ctrlp.vim.git
