@@ -30,9 +30,10 @@ Replaced dotfiles are saved at `~/dotfiles-backup/`
 Vim plugins:
 * `pathogen` for plugin version control
 * `git.vim` for using git without exiting vim
-* `nerdtree` for awesome IDE-like direcotry tree in a sidebar
+* `nerdtree` for awesome IDE-like directory tree in a sidebar
 * `pydoc.vim` for accessing python documentation
 * `tcomment` for easy to use comment shortcuts
 * `easymotion` for lightning speed movement
 * `scrollcolor` for interactively checking out color schemes
 * `color_sample_pack` for being able to choose out of 100 best color schemes
+* `ctrlp` for instant file search
