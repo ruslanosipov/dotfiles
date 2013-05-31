@@ -61,8 +61,7 @@ for filename in dotfiles:
         continue
 
     # Add dots to dotfile names.
-    # dotfile = '.' + filename
-    dotfile = filename
+    dotfile = '.' + filename
 
     # Assume that this is a directory and try to create a symlink.
     try:
