@@ -137,6 +137,9 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
+" NERDTree: ignore compiled files
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+
 " Exuberant Ctags: autogenerate on py file write
 au BufWritePost *.py silent! !ctags -R &
 
