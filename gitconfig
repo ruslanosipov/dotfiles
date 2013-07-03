@@ -21,7 +21,7 @@
 	cp = cherry-pick
 	show-files = "!f() { git diff-tree --no-commit-id --name-only -r $1; }; f"
 	show-diff = "!f() { git difftool $1^ $1; }; f"
-	pretty-log = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
+	pretty-log = log --graph --pretty=format:\"%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(yellow)%d%Creset\" --abbrev-commit --date=relative
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
