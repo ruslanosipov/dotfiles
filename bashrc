@@ -94,6 +94,10 @@ test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 # choose current prompt style (see set_prompt for details)
 set_prompt 2
 
+# python prompt enhancement
+export PYTHONSTARTUP="$HOME/.python-shell-enhancement/pythonstartup.py"
+export PYTHON_HISTORY_FILE="$HOME/.pythonhistory"
+
 # ------------------------------------------------------------------------------
 # INCLUDE LOCAL CONFIG {{{1
 # ------------------------------------------------------------------------------
