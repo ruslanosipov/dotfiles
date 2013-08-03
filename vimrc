@@ -51,6 +51,11 @@ let &titleold=getcwd()
 " Shorten press ENTER to continue messages
 set shortmess=atI
 
+" Increase lower status bar height in diff mode
+if &diff
+    set cmdheight=2
+endif
+
 " Show last command
 set showcmd
 
@@ -115,27 +120,27 @@ endif
 let g:EasyMotion_leader_key = '<Leader>'
 
 " NERDTree: auto open if terminal is wide enough
-if !&diff && &co > 120
-  autocmd VimEnter * NERDTree
-endif
+" if !&diff && &co > 120
+"   autocmd VimEnter * NERDTree
+" endif
 
 " NERDTree: close if only NERDTree left
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " NERDTree: focus on text window (left)
-autocmd VimEnter * wincmd l
-autocmd BufNew * wincmd l
+" autocmd VimEnter * wincmd l
+" autocmd BufNew * wincmd l
 
 " NERDTree: auto close if last window
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
+" function! s:CloseIfOnlyNerdTreeLeft()
+"   if exists("t:NERDTreeBufName")
+"     if bufwinnr(t:NERDTreeBufName) != -1
+"       if winnr("$") == 1
+"         q
+"       endif
+"     endif
+"   endif
+" endfunction
 
 " NERDTree: ignore compiled files
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
