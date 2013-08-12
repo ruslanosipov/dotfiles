@@ -79,7 +79,10 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # more colors in aterminal
-export TERM='xterm-256color'
+export TERM=xterm-256color
+
+# more color if running tmux
+[ -n "$TMUX" ] && export TERM=screen-256color
 
 # text editor
 export EDITOR=vim
