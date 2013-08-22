@@ -34,3 +34,6 @@
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
 	url = https://github.com/jbisbee/python-shell-enhancement.git
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
+	url = git@github.com:klen/python-mode
