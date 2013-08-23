@@ -33,6 +33,9 @@ set noswapfile
 set ignorecase
 set smartcase
 
+" Don't ignore case for file completion
+set nofileignorecase
+
 " Linewrap for git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
