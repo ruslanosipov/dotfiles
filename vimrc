@@ -149,7 +149,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 " Exuberant Ctags: autogenerate on py file write
-au BufWritePost *.py silent! !ctags -R &
+au BufWritePost *.py silent! !ctags --exclude=env -R &
 
 " Pydoc: open in new tab instead of split
 let g:pydoc_open_cmd = 'tabnew'
