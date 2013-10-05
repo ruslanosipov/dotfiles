@@ -97,6 +97,9 @@ filetype indent on
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.pyo
 
+" Ignore virtualenv directory
+set wildignore+=env
+
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
 
