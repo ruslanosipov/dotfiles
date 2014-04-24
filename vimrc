@@ -122,6 +122,9 @@ endif
 " => Plugins {{{1
 "------------------------------------------------------------------------------
 
+" DetectIndent: automatically detect
+:autocmd BufReadPost * :DetectIndent 
+
 " EasyMotion: one leader key instead of two
 let g:EasyMotion_leader_key = '<Leader>'
 
@@ -159,6 +162,9 @@ let g:pydoc_open_cmd = 'tabnew'
 
 " Pydoc: disable search term highlight
 let g:pydoc_highlight=0 
+
+" Map Gundo.
+nnoremap <F5> :GundoToggle<CR>
 
 "------------------------------------------------------------------------------
 " => Shell command {{{1
