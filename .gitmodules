@@ -35,9 +35,6 @@
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
 	url = https://github.com/jbisbee/python-shell-enhancement
-[submodule "vim/bundle/python-mode"]
-	path = vim/bundle/python-mode
-	url = https://github.com/klen/python-mode
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized

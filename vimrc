@@ -77,6 +77,15 @@ if &co > 80
   set nu
 endif
 
+" Solarized Mac compatibility
+if !has('gui_running')
+    " Compatibility for Terminal
+    let g:solarized_termtrans=1
+
+    " Make Solarized use 16 colors for Terminal support
+    let g:solarized_termcolors=16
+endif
+
 "------------------------------------------------------------------------------
 " => Misc {{{1
 "------------------------------------------------------------------------------
