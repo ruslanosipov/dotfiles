@@ -175,6 +175,9 @@ let g:pydoc_highlight=0
 " Map Gundo.
 nnoremap <F5> :GundoToggle<CR>
 
+" SimpylFold: Do not fold docstrings.
+let g:SimpylFold_fold_docstring = 0
+
 "------------------------------------------------------------------------------
 " => Shell command {{{1
 "------------------------------------------------------------------------------
