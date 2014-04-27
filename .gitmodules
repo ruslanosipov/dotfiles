@@ -51,3 +51,7 @@
 [submodule "vim/bundle/SimpylFold"]
 	path = vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "vim/bundle/conque-term"]
+	path = vim/bundle/conque-term
+	url = https://github.com/rosenfeld/conque-term
+	ignore = dirty
