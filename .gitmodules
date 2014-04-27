@@ -55,3 +55,7 @@
 	path = vim/bundle/conque-term
 	url = https://github.com/rosenfeld/conque-term
 	ignore = dirty
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim
+	ignore = dirty

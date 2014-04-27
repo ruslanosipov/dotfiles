@@ -1,6 +1,7 @@
 # dotfiles
 
-This repository hosts my personal dotfiles in order to synchronize latest between machines. Feel free to fork the repo or use any files as it is.
+This repository hosts my personal dotfiles in order to synchronize latest
+between machines. Feel free to fork the repo or use any files as it is.
 
 ## Installation
 
@@ -17,23 +18,36 @@ Edit `~/.gitconfig.local` and add following:
         name = your name
         email = your email
 
-You can also add some user-specific settings in this file to override any settings specified in `.gitconfig`.
+You can also add some user-specific settings in this file to override any
+settings specified in `.gitconfig`.
 
 Replaced dotfiles are saved at `~/dotfiles-backup/`
 
     rm -rf ~/dotfiles-backup
 
+You may want to have `ctags` installed.
+
 ## What's inside
 
-`set_prompt()` allows switching between pre-configured PS1 (bash prompt) styles on the go, see `.bash_profile` for usage.
+`set_prompt()` allows switching between pre-configured PS1 (bash prompt)
+styles on the go, see `.bash_profile` for usage.
 
 Vim plugins:
-* `pathogen` for plugin version control
-* `git.vim` for using git without exiting vim
-* `nerdtree` for awesome IDE-like directory tree in a sidebar
-* `pydoc.vim` for accessing python documentation
-* `tcomment` for easy to use comment shortcuts
-* `easymotion` for lightning speed movement
-* `scrollcolor` for interactively checking out color schemes
-* `color_sample_pack` for being able to choose out of 100 best color schemes
-* `ctrlp` for instant file search
+* `Conque` -- Interactive shell within vim.
+* `DetectIndent` -- Adjust indent settings depending on the file.
+* `DirDiff` -- Aid with directory diff.
+* `Gundo` -- Undo tree visualizer.
+* `SimpylFold` -- Folds for python files.
+* `syntastic` -- Linter.
+* `taglist` -- IDE-like list of classes/methods.
+* `color_sample_pack` -- 100 best color schemes.
+* `ctrlp` -- Instant file search.
+* `easymotion` -- Lightning speed movement.
+* `git.vim` -- Using git without exiting vim.
+* `nerdtree` -- Awesome IDE-like directory tree in a sidebar.
+* `pathogen` -- Plugin version control.
+* `pydoc.vim` -- Accessing python documentation.
+* `scrollcolor` -- Interactive color scheme previewer.
+* `tcomment` -- Easy to use comment shortcuts.
+* `unimpaired.vim` -- Complimentary pairs of mappings.
+* `vim-colors-solarized` -- Solarized color scheme.
