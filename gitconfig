@@ -19,6 +19,7 @@
 	sa = stash apply
 	d = difftool
 	cp = cherry-pick
+	b = branch
 	show-files = "!f() { git diff-tree --no-commit-id --name-only -r $1; }; f"
 	show-diff = "!f() { git difftool $1^ $1; }; f"
 	pretty-log = log --graph --pretty=format:\"%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(yellow)%d%Creset\" --abbrev-commit --date=relative
