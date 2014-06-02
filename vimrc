@@ -42,6 +42,10 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Semicolon is too long to type
 nnoremap ; :
 
+" Navigate the wrapped lines easier.
+nnoremap j gj
+nnoremap k gk
+
 "------------------------------------------------------------------------------
 " => Looks {{{1
 "------------------------------------------------------------------------------
@@ -74,6 +78,9 @@ set ruler
 " Enable wild menu (tab command autocompletion)
 set wildmenu
 set wildmode=list:longest,full
+
+" Soft word wrapping.
+set linebreak
 
 " Display line numbers if terminal is wide enough
 if &co > 80
