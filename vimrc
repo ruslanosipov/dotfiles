@@ -96,6 +96,9 @@ if !has('gui_running')
     let g:solarized_termcolors=16
 endif
 
+" Prettier display of long lines of text.
+set display+=lastline
+
 "------------------------------------------------------------------------------
 " => Misc {{{1
 "------------------------------------------------------------------------------
