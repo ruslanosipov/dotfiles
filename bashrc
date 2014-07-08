@@ -55,6 +55,8 @@ set_prompt() {
     elif [ "$1" == 5 ]; then
         prompt='\[\033[01;32m\]$(cat ~/.username)'
         prompt+='\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    elif [ "$1" == 6 ]; then
+        prompt='\u@\h\$ '
     fi
 
     PS1=$prompt

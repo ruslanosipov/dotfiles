@@ -59,6 +59,9 @@
 	path = vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
 	ignore = dirty
-[submodule "vim/bundle/YouCompleteMe"]
-	path = vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "vim/bundle/rope-vim"]
+	path = vim/bundle/rope-vim
+	url = https://github.com/klen/rope-vim
