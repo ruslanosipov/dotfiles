@@ -1,6 +1,7 @@
 " URL: https://github.com/ruslanosipov/dotfiles
 " Author: Ruslan Osipov
-" Description: Personal .vimrc file.
+" Description: Corporate .vimrc file. This is different from what is in a
+" personal GitHub repository.
 
 " => Pre-load ------------------------------------------------------------- {{{1
 
@@ -20,9 +21,9 @@ syntax on
 " Indentation settings.
 set autoindent
 set expandtab
-set shiftwidth=2
-set smartindent
-set tabstop=2
+set shiftwidth = 2
+" set smartindent -- This brakes plaintext editing.
+set tabstop = 2
 
 " Disable backups and .swp files.
 set nobackup
@@ -32,24 +33,27 @@ set nowritebackup
 " Semicolon is too long to type.
 nnoremap ; :
 
+" Map leader key to a comma.
+let mapleader = ","
+
 " Use system clipboard.
-set clipboard=unnamedplus
+set clipboard = unnamedplus
 
 " Enable wild menu (tab command autocompletion).
 set wildmenu
-set wildmode=list:longest,full
+set wildmode = list:longest,full
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
+set background = dark
 colorscheme Tomorrow-Night
 
 " Set terminal window title and set it back on exit.
 set title
-let &titleold=getcwd()
+let &titleold = getcwd()
 
 " Shorten press ENTER to continue messages.
-set shortmess=atI
+set shortmess = atI
 
 " Show last command.
 set showcmd
@@ -70,11 +74,11 @@ set linebreak
 
 " => Movement and search -------------------------------------------------- {{{1
 
-" Ignore case when searching
+" Ignore case when searching.
 set ignorecase
 set smartcase
 
-" Don't ignore case for file completion
+" Don't ignore case for file completion.
 " set nofileignorecase
 
 " Fast split navigation.
@@ -90,18 +94,18 @@ nnoremap k gk
 " => Filetype-specific ---------------------------------------------------- {{{1
 
 " Linewrap for git commit messages.
-autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype gitcommit setlocal spell textwidth = 72
 
 " => Misc ----------------------------------------------------------------- {{{1
 
-" Use Unix as the standart file type
-set ffs=unix,dos,mac
+" Use Unix as the standart file type.
+set ffs = unix,dos,mac
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.pyo
+" Ignore compiled files.
+set wildignore = *.o,*~,*.pyc,*.pyo
 
-" Ignore virtualenv directory
-set wildignore+=env
+" Ignore virtualenv directory.
+set wildignore += env
 
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
@@ -109,25 +113,25 @@ set foldmethod=marker
 " => Fixes and hacks ------------------------------------------------------ {{{1
 
 " Ignore mouse (in GVIM).
-set mouse=c
+set mouse = c
 
 " Fix backspace behavior in GVIM.
-set bs=2
+set bs = 2
 
 " NERDTree arrows in Windows.
 if has("win32") || has("win64") || has("win32unix")
-  let g:NERDTreeDirArrows=0
+  let g:NERDTreeDirArrows = 0
 endif
 
 " Solarized Mac compatibility.
 if !has('gui_running')
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=16
+  let g:solarized_termtrans = 1
+  let g:solarized_termcolors = 16
 endif
 
 " Increase lower status bar height in diff mode.
 if &diff
-  set cmdheight=2
+  set cmdheight = 2
 endif
 
 " => Plugins -------------------------------------------------------------- {{{1
@@ -156,7 +160,7 @@ au BufWritePost *.py silent! !ctags -R * &
 let g:pydoc_open_cmd = 'tabnew'
 
 " Pydoc: disable search term highlight.
-let g:pydoc_highlight=0 
+let g:pydoc_highlight = 0 
 
 " Map Gundo.
 nnoremap <F5> :GundoToggle<CR>
@@ -185,7 +189,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " => Google plugins ------------------------------------------------------- {{{1
 
-Glug blaze do/mappings=',b'
+Glug blaze do/mappings = '<leader>b'
 Glug blazedeps
 Glug codefmt auto_filetypes+=blazebuild
 Glug google-filetypes
@@ -195,9 +199,10 @@ Glug ultisnips-google
 Glug whitespace
 Glug youcompleteme-google
 
-let g:syntastic_python_checkers=['gpylint']
+let g:syntastic_python_checkers = ['gpylint']
+let g:syntastic_javascript_gjslint_conf = '--strict'
 
 autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
 
-" Open relevant BUILD file
+" Open relevant BUILD file.
 nnoremap <F10> :RelatedFilesWindow<CR>
