@@ -170,6 +170,11 @@ let g:SimpylFold_fold_docstring = 0
 " Synastic: Make :lnext work.
 let g:syntastic_always_populate_loc_list = 1
 
+" DetectIndent: Enable and configure.
+:autocmd BufReadPost * :DetectIndent
+:let g:detectindent_preferred_expandtab = 1
+:let g:detectindent_preferred_indent = 2
+
 " => Google plugins ------------------------------------------------------- {{{1
 
 Glug blaze do/mappings=',b'

@@ -22,3 +22,4 @@ alias r="fc -s"
 
 # vim
 alias nerd="vim -c NERDTree"
+alias v="vim"
