@@ -21,9 +21,9 @@ syntax on
 " Indentation settings.
 set autoindent
 set expandtab
-set shiftwidth = 2
+set shiftwidth=2
 " set smartindent -- This brakes plaintext editing.
-set tabstop = 2
+set tabstop=2
 
 " Disable backups and .swp files.
 set nobackup
@@ -37,15 +37,15 @@ nnoremap ; :
 let mapleader = ","
 
 " Use system clipboard.
-set clipboard = unnamedplus
+set clipboard=unnamedplus
 
 " Enable wild menu (tab command autocompletion).
 set wildmenu
-set wildmode = list:longest,full
+set wildmode=list:longest,full
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background = dark
+set background=dark
 colorscheme Tomorrow-Night
 
 " Set terminal window title and set it back on exit.
@@ -53,7 +53,7 @@ set title
 let &titleold = getcwd()
 
 " Shorten press ENTER to continue messages.
-set shortmess = atI
+set shortmess=atI
 
 " Show last command.
 set showcmd
@@ -99,13 +99,13 @@ autocmd Filetype gitcommit setlocal spell textwidth = 72
 " => Misc ----------------------------------------------------------------- {{{1
 
 " Use Unix as the standart file type.
-set ffs = unix,dos,mac
+set ffs=unix,dos,mac
 
 " Ignore compiled files.
-set wildignore = *.o,*~,*.pyc,*.pyo
+set wildignore=*.o,*~,*.pyc,*.pyo
 
 " Ignore virtualenv directory.
-set wildignore += env
+set wildignore+=env
 
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
@@ -113,10 +113,10 @@ set foldmethod=marker
 " => Fixes and hacks ------------------------------------------------------ {{{1
 
 " Ignore mouse (in GVIM).
-set mouse = c
+set mouse=c
 
 " Fix backspace behavior in GVIM.
-set bs = 2
+set bs=2
 
 " NERDTree arrows in Windows.
 if has("win32") || has("win64") || has("win32unix")
@@ -189,7 +189,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " => Google plugins ------------------------------------------------------- {{{1
 
-Glug blaze do/mappings = '<leader>b'
+Glug blaze do/mappings='<Leader>b'
 Glug blazedeps
 Glug codefmt auto_filetypes+=blazebuild
 Glug google-filetypes
