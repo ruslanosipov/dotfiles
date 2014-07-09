@@ -175,6 +175,14 @@ let g:syntastic_always_populate_loc_list = 1
 :let g:detectindent_preferred_expandtab = 1
 :let g:detectindent_preferred_indent = 2
 
+" UltiSnips: Compatibility with YouCompleteMe via SuperTab.
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 " => Google plugins ------------------------------------------------------- {{{1
 
 Glug blaze do/mappings=',b'
@@ -183,6 +191,7 @@ Glug codefmt auto_filetypes+=blazebuild
 Glug google-filetypes
 Glug relatedfiles
 Glug syntastic-google
+Glug ultisnips-google
 Glug whitespace
 Glug youcompleteme-google
 
