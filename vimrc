@@ -33,9 +33,6 @@ set nowritebackup
 " Semicolon is too long to type.
 nnoremap ; :
 
-" Map leader key to a comma.
-let mapleader = ","
-
 " Use system clipboard.
 set clipboard=unnamedplus
 
@@ -186,6 +183,9 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Map VimRoom.
+nnoremap <Leader>vr :VimroomToggle<CR>
 
 " => Google plugins ------------------------------------------------------- {{{1
 
