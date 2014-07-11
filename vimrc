@@ -22,7 +22,6 @@ syntax on
 set autoindent
 set expandtab
 set shiftwidth=2
-" set smartindent -- This brakes plaintext editing.
 set tabstop=2
 
 " Disable backups and .swp files.
@@ -32,6 +31,7 @@ set nowritebackup
 
 " Semicolon is too long to type.
 nnoremap ; :
+vnoremap ; :
 
 " Use system clipboard.
 set clipboard=unnamedplus
@@ -75,9 +75,6 @@ set linebreak
 set ignorecase
 set smartcase
 
-" Don't ignore case for file completion.
-" set nofileignorecase
-
 " Fast split navigation.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -91,7 +88,10 @@ nnoremap k gk
 " => Filetype-specific ---------------------------------------------------- {{{1
 
 " Linewrap for git commit messages.
-autocmd Filetype gitcommit setlocal spell textwidth = 72
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Treat all HTML as Django templates.
+au BufNewFile,BufRead *.html set ft=htmldjango
 
 " => Misc ----------------------------------------------------------------- {{{1
 
@@ -128,7 +128,7 @@ endif
 
 " Increase lower status bar height in diff mode.
 if &diff
-  set cmdheight = 2
+  set cmdheight=2
 endif
 
 " => Plugins -------------------------------------------------------------- {{{1
@@ -186,6 +186,9 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Map VimRoom.
 nnoremap <Leader>vr :VimroomToggle<CR>
+
+" ConqueTerm: Ignore warnings.
+let g:ConqueTerm_StartMessages = 0
 
 " => Google plugins ------------------------------------------------------- {{{1
 
