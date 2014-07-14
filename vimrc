@@ -2,68 +2,61 @@
 " Author: Ruslan Osipov
 " Description: Personal .vimrc file.
 
-"------------------------------------------------------------------------------
-" => Pre-load {{{1
-"------------------------------------------------------------------------------
+" => Pre-load ------------------------------------------------------------ {{{1
 
-" Pathogen: load and infect
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 execute pathogen#helptags()
 
-"------------------------------------------------------------------------------
-" => Editing {{{1
-"------------------------------------------------------------------------------
+" => Editing --------------------------------------------------------------{{{1
 
 syntax on
 
-" Indentation settings
+" Indentation settings.
 set tabstop=4
 set shiftwidth=4
-set smartindent
 set autoindent
 set expandtab
 
-" Disable backups and .swp files
+" Disable backups and .swp files.
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Ignore case when searching
+" Ignore case when searching.
 set ignorecase
 set smartcase
 
-" Don't ignore case for file completion
-" set nofileignorecase
-
-" Linewrap for git commit messages
+" Linewrap for git commit messages.
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-" Semicolon is too long to type
+" Semicolon is too long to type.
 nnoremap ; :
+
+" COmma is much better as a leader.
+let mapleader = ","
 
 " Navigate the wrapped lines easier.
 nnoremap j gj
 nnoremap k gk
 
-"------------------------------------------------------------------------------
-" => Looks {{{1
-"------------------------------------------------------------------------------
+" => Looks --------------------------------------------------------------- {{{1
 
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme Tomorrow-Night
+hi clear SpellBad
+hi SpellBad cterm=underline
 
-" Set terminal window title
+" Set terminal window title and return it back on exit.
 set title
-" And return it back on exit
-let &titleold=getcwd()
+let &titleold = getcwd()
 
 " Shorten press ENTER to continue messages
 set shortmess=atI
 
 " Increase lower status bar height in diff mode
 if &diff
-    set cmdheight=2
+  set cmdheight=2
 endif
 
 " Show last command
@@ -87,21 +80,10 @@ if &co > 80
   set nu
 endif
 
-" Solarized Mac compatibility
-if !has('gui_running')
-    " Compatibility for Terminal
-    let g:solarized_termtrans=1
-
-    " Make Solarized use 16 colors for Terminal support
-    let g:solarized_termcolors=16
-endif
-
 " Prettier display of long lines of text.
 set display+=lastline
 
-"------------------------------------------------------------------------------
-" => Misc {{{1
-"------------------------------------------------------------------------------
+" => Misc ---------------------------------------------------------------- {{{1
 
 " Fast split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -125,65 +107,42 @@ set wildignore+=env
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
 
-"------------------------------------------------------------------------------
-" => Fixes {{{1
-"------------------------------------------------------------------------------
+" => Fixes --------------------------------------------------------------- {{{1
 
-" Ignore mouse (in GVIM)
+" Ignore mouse and fix backspace behavior in gvim.
 set mouse=c
-
-" Fix backspace behavior in GVIM
 set bs=2
 
-" NERDTree arrows in Windows
+" NERDTree arrows in Windows.
 if has("win32") || has("win64") || has("win32unix")
-  let g:NERDTreeDirArrows=0
+  let g:NERDTreeDirArrows = 0
 endif
 
-"------------------------------------------------------------------------------
-" => Plugins {{{1
-"------------------------------------------------------------------------------
+" Solarized Mac compatibility.
+if !has('gui_running')
+  let g:solarized_termtrans = 1
+  let g:solarized_termcolors = 16
+endif
 
-" DetectIndent: automatically detect
-:autocmd BufReadPost * :DetectIndent 
+" => Plugins ------------------------------------------------------------- {{{1
 
-" EasyMotion: one leader key instead of two
-let g:EasyMotion_leader_key = '<Leader>'
+" DetectIndent: automatically detect.
+:autocmd BufReadPost * :DetectIndent
 
-" NERDTree: auto open if terminal is wide enough
-" if !&diff && &co > 120
-"   autocmd VimEnter * NERDTree
-" endif
-
-" NERDTree: close if only NERDTree left
-" autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-
-" NERDTree: focus on text window (left)
-" autocmd VimEnter * wincmd l
-" autocmd BufNew * wincmd l
-
-" NERDTree: auto close if last window
-" function! s:CloseIfOnlyNerdTreeLeft()
-"   if exists("t:NERDTreeBufName")
-"     if bufwinnr(t:NERDTreeBufName) != -1
-"       if winnr("$") == 1
-"         q
-"       endif
-"     endif
-"   endif
-" endfunction
-
-" NERDTree: ignore compiled files
+" NERDTree: ignore compiled files.
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Exuberant Ctags: autogenerate on py file write
+" NERDTree: toggle.
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+
+" Exuberant Ctags: autogenerate on py file write.
 au BufWritePost *.py silent! !ctags --exclude=env -R *.py &
 
-" Pydoc: open in new tab instead of split
+" Pydoc: open in new tab instead of split.
 let g:pydoc_open_cmd = 'tabnew'
 
-" Pydoc: disable search term highlight
-let g:pydoc_highlight=0 
+" Pydoc: disable search term highlight.
+let g:pydoc_highlight = 0
 
 " Map Gundo.
 nnoremap <F5> :GundoToggle<CR>
@@ -191,32 +150,9 @@ nnoremap <F5> :GundoToggle<CR>
 " SimpylFold: Do not fold docstrings.
 let g:SimpylFold_fold_docstring = 0
 
-"------------------------------------------------------------------------------
-" => Shell command {{{1
-"------------------------------------------------------------------------------
+" Vimroom: toggle and resume spelling settings.
+nnoremap <Leader>vr :VimroomToggle<CR>:hi clear SpellBad<CR>
+  \:hi SpellBad cterm=underline<CR>
 
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-
-function! s:RunShellCommand(cmdline)
-  let isfirst = 1
-  let words = []
-  for word in split(a:cmdline)
-    if isfirst
-      let isfirst = 0  " don't change first word (shell command)
-    else
-      if word[0] =~ '\v[%#<]'
-        let word = expand(word)
-      endif
-      let word = shellescape(word, 1)
-    endif
-    call add(words, word)
-  endfor
-  let expanded_cmdline = join(words)
-  rightbelow new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:  ' . a:cmdline)
-  call setline(2, 'Expanded to:  ' . expanded_cmdline)
-  call append(line('$'), substitute(getline(2), '.', '=', 'g'))
-  silent execute '$read !'. expanded_cmdline
-  1
-endfunction
+" VimWiki: default location.
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]

@@ -90,6 +90,9 @@ export EDITOR=vim
 # put ~/bin on PATH if it exists
 test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 
+# use vi mode for editing
+set -o vi
+
 # ------------------------------------------------------------------------------
 # PROMPT {{{1
 # ------------------------------------------------------------------------------

@@ -19,3 +19,4 @@ alias l='ls -CF'
 # misc
 alias xclip="xclip -selection c"
 alias r="fc -s"
+alias v="vim"
