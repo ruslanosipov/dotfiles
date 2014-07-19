@@ -44,40 +44,40 @@ nnoremap k gk
 
 set background=light
 colorscheme Tomorrow-Night
-hi clear SpellBad
-hi SpellBad cterm=underline
+highlight clear SpellBad
+highlight SpellBad cterm=underline
 
 " Set terminal window title and return it back on exit.
 set title
 let &titleold = getcwd()
 
-" Shorten press ENTER to continue messages
+" Shorten press ENTER to continue messages.
 set shortmess=atI
 
-" Increase lower status bar height in diff mode
+" Increase lower status bar height in diff mode.
 if &diff
   set cmdheight=2
 endif
 
-" Show last command
+" Show last command.
 set showcmd
 
-" Highlight cursor line
+" Highlight cursor line.
 set cursorline
 
-" Ruler (line, column and % at the right bottom)
+" Ruler (line, column and % at the right bottom).
 set ruler
 
-" Enable wild menu (tab command autocompletion)
+" Enable wild menu (tab command autocompletion).
 set wildmenu
 set wildmode=list:longest,full
 
 " Soft word wrapping.
 set linebreak
 
-" Display line numbers if terminal is wide enough
+" Display line numbers if terminal is wide enough.
 if &co > 80
-  set nu
+  set number
 endif
 
 " Prettier display of long lines of text.
@@ -85,23 +85,23 @@ set display+=lastline
 
 " => Misc ---------------------------------------------------------------- {{{1
 
-" Fast split navigation
+" Fast split navigation.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Use Unix as the standart file type
+" Use Unix as the standart file type.
 set ffs=unix,dos,mac
 
-" Enable filetype plugins
+" Enable filetype plugins.
 filetype plugin on
 filetype indent on
 
-" Ignore compiled files
+" Ignore compiled files.
 set wildignore=*.o,*~,*.pyc,*.pyo
 
-" Ignore virtualenv directory
+" Ignore virtualenv directory.
 set wildignore+=env
 
 " Fold using {{{n, where n is fold level
@@ -111,7 +111,7 @@ set foldmethod=marker
 
 " Ignore mouse and fix backspace behavior in gvim.
 set mouse=c
-set bs=2
+set backspace=2
 
 " NERDTree arrows in Windows.
 if has("win32") || has("win64") || has("win32unix")
@@ -127,7 +127,7 @@ endif
 " => Plugins ------------------------------------------------------------- {{{1
 
 " DetectIndent: automatically detect.
-:autocmd BufReadPost * :DetectIndent
+autocmd BufReadPost * :DetectIndent
 
 " NERDTree: ignore compiled files.
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
@@ -136,7 +136,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 
 " Exuberant Ctags: autogenerate on py file write.
-au BufWritePost *.py silent! !ctags --exclude=env -R *.py &
+autocmd BufWritePost *.py silent! !ctags --exclude=env -R *.py &
 
 " Pydoc: open in new tab instead of split.
 let g:pydoc_open_cmd = 'tabnew'
