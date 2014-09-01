@@ -30,22 +30,31 @@ set smartcase
 " Linewrap for git commit messages.
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" Wrap text in VimWiki.
+autocmd Filetype vimwiki setlocal textwidth=80
+
 " Semicolon is too long to type.
 nnoremap ; :
 
-" COmma is much better as a leader.
+" Comma is much better as a leader.
 let mapleader = ","
 
 " Navigate the wrapped lines easier.
 nnoremap j gj
 nnoremap k gk
 
+" Trim EOL whitespace on save.
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Syntax highlighting in fc.
+if expand('%:t') =~?'bash-fc-\d\+'
+  setfiletype sh
+endif
+
 " => Looks --------------------------------------------------------------- {{{1
 
-set background=light
-colorscheme Tomorrow-Night
-highlight clear SpellBad
-highlight SpellBad cterm=underline
+set background=dark
+colorscheme solarized
 
 " Set terminal window title and return it back on exit.
 set title
@@ -83,6 +92,12 @@ endif
 " Prettier display of long lines of text.
 set display+=lastline
 
+" Set font and disable all GUI options in GVim.
+if has("gui_running")
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h18
+  set guioptions=
+endif
+
 " => Misc ---------------------------------------------------------------- {{{1
 
 " Fast split navigation.
@@ -91,7 +106,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Use Unix as the standart file type.
+" Use Unix as the standard file type.
 set ffs=unix,dos,mac
 
 " Enable filetype plugins.
@@ -149,10 +164,6 @@ nnoremap <F5> :GundoToggle<CR>
 
 " SimpylFold: Do not fold docstrings.
 let g:SimpylFold_fold_docstring = 0
-
-" Vimroom: toggle and resume spelling settings.
-nnoremap <Leader>vr :VimroomToggle<CR>:hi clear SpellBad<CR>
-  \:hi SpellBad cterm=underline<CR>
 
 " VimWiki: default location.
 let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
