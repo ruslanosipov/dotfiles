@@ -48,16 +48,9 @@
 	path = vim/bundle/Gundo
 	url = https://github.com/vim-scripts/Gundo.git
 	ignore = dirty
-[submodule "vim/bundle/SimpylFold"]
-	path = vim/bundle/SimpylFold
-	url = https://github.com/tmhedberg/SimpylFold.git
 [submodule "vim/bundle/conque-term"]
 	path = vim/bundle/conque-term
 	url = https://github.com/rosenfeld/conque-term
-	ignore = dirty
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim
 	ignore = dirty
 [submodule "vim/bundle/vim-abolish"]
 	path = vim/bundle/vim-abolish
@@ -77,9 +70,30 @@
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
-[submodule "vim/bundle/vimroom"]
-	path = vim/bundle/vimroom
-	url = https://github.com/mikewest/vimroom
 [submodule "vim/bundle/wordy"]
 	path = vim/bundle/wordy
 	url = https://github.com/reedes/vim-wordy
+[submodule "vim/bundle/vimwiki"]
+	path = vim/bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki
+[submodule "vim/bundle/vim-tmux-navigator"]
+	path = vim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/repeat"]
+	path = vim/bundle/repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/bundle/vim-angular"]
+	path = vim/bundle/vim-angular
+	url = https://github.com/burnettk/vim-angular
+[submodule "vim/bundle/goyo"]
+	path = vim/bundle/goyo
+	url = https://github.com/junegunn/goyo.vim
