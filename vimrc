@@ -46,9 +46,19 @@ set wildmode=list:longest,full
 
 command TrimWhitespace %s/\s\+$//e
 
+" This needs to be worked on. Messes up the code. Probably set for .wiki or
+" .txt formats only. Not for Python code, that's for sure.
+" augroup prose
+"     autocmd InsertEnter * set formatoptions+=a
+"     autocmd InsertLeave * set formatoptions-=a
+" augroup END
+
+" Command to close current buffer without closing the window.
+command Bd :bp | :sp | :bn | :bd
+
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
+set background=light
 colorscheme solarized
 
 " Set terminal window title and set it back on exit.
@@ -78,6 +88,12 @@ set linebreak
 
 " Prettier display of long lines of text.
 set display+=lastline
+
+" Powerline.
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline.
+set laststatus=2
 
 " => Movement and search -------------------------------------------------- {{{1
 
@@ -146,9 +162,10 @@ if has("win32") || has("win64") || has("win32unix")
 endif
 
 " Solarized Mac compatibility.
-if !has('gui_running')
-  let g:solarized_termtrans = 1
-  let g:solarized_termcolors = 16
+if has('gui_running')
+  set guioptions=
+  set guifont=M+\ 1mn\ Regular\ 14
+  set g:airline_symbols_space="\ua0"
 endif
 
 " Increase lower status bar height in diff mode.
@@ -178,7 +195,7 @@ nnoremap <leader>nt :NERDTreeToggle<cr>
 " Exuberant Ctags: autogenerate on py file write.
 augroup ctags
   autocmd!
-  au BufWritePost * silent! !ctags -R * &
+  au BufWritePost */git/google3/**/*.py silent! !ctags -R * &
 augroup END
 
 " Pydoc: open in new tab instead of split.
@@ -212,9 +229,6 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" VimRoom: toggle and resume spelling settings.
-nnoremap <leader>vr :VimroomToggle<cr>
-
 " ConqueTerm: Ignore warnings.
 let g:ConqueTerm_StartMessages = 0
 
@@ -223,9 +237,14 @@ let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
 
 " => Google plugins ------------------------------------------------------- {{{1
 
-Glug blaze do/mappings='<leader>b'
+Glug blaze plugin[mappings]='<leader>b'
 Glug blazedeps
-Glug codefmt auto_filetypes+=blazebuild
+Glug codefmt-google auto_filetypes+=blazebuild
+Glug corpweb
+Glug critique
+Glug ft-javascript
+Glug ft-python
+Glug git5
 Glug google-filetypes
 Glug relatedfiles
 Glug syntastic-google
@@ -233,13 +252,18 @@ Glug ultisnips-google
 Glug whitespace
 Glug youcompleteme-google
 
-let g:syntastic_python_checkers = ['gpylint']
+let g:syntastic_html_checkers = ['']
+let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
 let g:syntastic_javascript_gjslint_conf = '--strict'
+let g:syntastic_python_checkers = ['gpylint']
 
-augroup syntastic_pylint
-  autocmd!
-  autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
-augroup END
+" augroup syntastic_pylint
+"   autocmd!
+"   autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
+" augroup END
 
 " Open relevant BUILD file.
 nnoremap <F10> :RelatedFilesWindow<cr>
+
+" Unfold all files by default.
+au BufRead * normal zR
