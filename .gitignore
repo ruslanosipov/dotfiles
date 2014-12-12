@@ -1,2 +1,8 @@
 # generated files
 vim/.netrwhist
+
+# Mutt aliases list.
+mutt/aliases.txt
+
+# Google account for Mutt.
+mutt/ruslano.google
