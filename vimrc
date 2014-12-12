@@ -6,7 +6,7 @@
 " => Pre-load ------------------------------------------------------------- {{{1
 
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -22,6 +22,7 @@ syntax on
 set autoindent
 set expandtab
 set shiftwidth=2
+set softtabstop=2
 set tabstop=2
 
 " Disable backups and .swp files.
@@ -33,6 +34,9 @@ set nowritebackup
 nnoremap ; :
 vnoremap ; :
 
+" Map leader to a comma.
+let mapleader = ","
+
 " Use system clipboard.
 set clipboard=unnamedplus
 
@@ -40,10 +44,12 @@ set clipboard=unnamedplus
 set wildmenu
 set wildmode=list:longest,full
 
+command TrimWhitespace %s/\s\+$//e
+
 " => Looks ---------------------------------------------------------------- {{{1
 
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme solarized
 
 " Set terminal window title and set it back on exit.
 set title
@@ -63,11 +69,15 @@ set ruler
 
 " Display line numbers if terminal is wide enough.
 if &co > 80
-  set nu
+  set number
+  " set relativenumber
 endif
 
 " Soft word wrap.
 set linebreak
+
+" Prettier display of long lines of text.
+set display+=lastline
 
 " => Movement and search -------------------------------------------------- {{{1
 
@@ -88,10 +98,22 @@ nnoremap k gk
 " => Filetype-specific ---------------------------------------------------- {{{1
 
 " Linewrap for git commit messages.
-autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup filetype_gitcommit
+  autocmd!
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup END
+"
+" Enforce text width in VimWiki.
+augroup filetype_vimwiki
+  autocmd!
+  autocmd Filetype vimwiki setlocal textwidth=80
+augroup END
 
 " Treat all HTML as Django templates.
-au BufNewFile,BufRead *.html set ft=htmldjango
+augroup html_django
+  autocmd!
+  au BufNewFile,BufRead *.html set ft=htmldjango
+augroup END
 
 " => Misc ----------------------------------------------------------------- {{{1
 
@@ -106,6 +128,9 @@ set wildignore+=env
 
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
+
+" Temporary: disable folds on opening file.
+autocmd BufRead * normal zR
 
 " => Fixes and hacks ------------------------------------------------------ {{{1
 
@@ -133,9 +158,6 @@ endif
 
 " => Plugins -------------------------------------------------------------- {{{1
 
-" EasyMotion: one leader key instead of two.
-let g:EasyMotion_leader_key = '<Leader>'
-
 " NERDTree: auto close if last window.
 function! s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
@@ -150,31 +172,37 @@ endfunction
 " NERDTree: ignore compiled files.
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
+" NERDTree: toggle.
+nnoremap <leader>nt :NERDTreeToggle<cr>
+
 " Exuberant Ctags: autogenerate on py file write.
-au BufWritePost *.py silent! !ctags -R * &
+augroup ctags
+  autocmd!
+  au BufWritePost * silent! !ctags -R * &
+augroup END
 
 " Pydoc: open in new tab instead of split.
 let g:pydoc_open_cmd = 'tabnew'
 
 " Pydoc: disable search term highlight.
-let g:pydoc_highlight = 0 
+let g:pydoc_highlight = 0
 
 " Map Gundo.
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :GundoToggle<cr>
 
 " Force Gundo preview to the bottom.
 let g:gundo_preview_bottom = 1
-
-" SimpylFold: Do not fold docstrings.
-let g:SimpylFold_fold_docstring = 0
 
 " Synastic: Make :lnext work.
 let g:syntastic_always_populate_loc_list = 1
 
 " DetectIndent: Enable and configure.
-:autocmd BufReadPost * :DetectIndent
-:let g:detectindent_preferred_expandtab = 1
-:let g:detectindent_preferred_indent = 2
+augroup detectindent
+  autocmd!
+  autocmd BufReadPost * :DetectIndent
+augroup END
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 2
 
 " UltiSnips: Compatibility with YouCompleteMe via SuperTab.
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -184,15 +212,18 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" Map VimRoom.
-nnoremap <Leader>vr :VimroomToggle<CR>
+" VimRoom: toggle and resume spelling settings.
+nnoremap <leader>vr :VimroomToggle<cr>
 
 " ConqueTerm: Ignore warnings.
 let g:ConqueTerm_StartMessages = 0
 
+" VimWiki: default location.
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
+
 " => Google plugins ------------------------------------------------------- {{{1
 
-Glug blaze do/mappings='<Leader>b'
+Glug blaze do/mappings='<leader>b'
 Glug blazedeps
 Glug codefmt auto_filetypes+=blazebuild
 Glug google-filetypes
@@ -205,7 +236,10 @@ Glug youcompleteme-google
 let g:syntastic_python_checkers = ['gpylint']
 let g:syntastic_javascript_gjslint_conf = '--strict'
 
-autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
+augroup syntastic_pylint
+  autocmd!
+  autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
+augroup END
 
 " Open relevant BUILD file.
-nnoremap <F10> :RelatedFilesWindow<CR>
+nnoremap <F10> :RelatedFilesWindow<cr>
