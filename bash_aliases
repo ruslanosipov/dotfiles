@@ -19,6 +19,8 @@ alias l='ls -CF'
 # misc
 alias xclip="xclip -selection c"
 alias r="fc -s"
+alias fuck="reset"
+alias cd..="cd .."
 
 # vim
 alias nerd="vim -c NERDTree"
