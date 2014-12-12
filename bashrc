@@ -106,3 +106,20 @@ set_prompt 2
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
+
+# ------------------------------------------------------------------------------
+# POWERLINE {{{1
+# ------------------------------------------------------------------------------
+
+powerline-daemon -q
+
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
+
+# ------------------------------------------------------------------------------
+# GOOGLE SETTINGS {{{1
+# ------------------------------------------------------------------------------
+
+# fuck P4DIFF
+P4DIFF=/bin/true
