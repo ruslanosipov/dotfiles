@@ -54,7 +54,7 @@ endif
 " => Looks --------------------------------------------------------------- {{{1
 
 set background=dark
-colorscheme solarized
+colorscheme spacegray
 
 " Set terminal window title and return it back on exit.
 set title
