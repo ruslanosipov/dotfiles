@@ -50,3 +50,9 @@
 [submodule "vim/bundle/spacegray"]
 	path = vim/bundle/spacegray
 	url = https://github.com/ajh17/Spacegray.vim
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish

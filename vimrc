@@ -166,4 +166,8 @@ nnoremap <F5> :GundoToggle<CR>
 let g:SimpylFold_fold_docstring = 0
 
 " VimWiki: default location.
-let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
+let g:vimwiki_list = [{
+  \ 'path': '$HOME/Dropbox/wiki',
+  \ 'template_path': '$HOME/Dropbox/wiki/templates',
+  \ 'template_default': 'default',
+  \ 'template_ext': '.html'}]

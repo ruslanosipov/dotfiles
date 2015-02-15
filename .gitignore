@@ -1,2 +1,6 @@
 # generated files
 vim/.netrwhist
+
+# mutt account files
+mutt/account_*
+!mutt/account_template
