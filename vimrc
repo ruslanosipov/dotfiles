@@ -249,10 +249,11 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " NERDTree: toggle.
 nnoremap <leader>nt :NERDTreeToggle<cr>
 
-" Exuberant Ctags: autogenerate on py file write.
+" Exuberant Ctags: autogenerate on file write.
 augroup ctags
   autocmd!
   au BufWritePost */git/google3/**/*.py silent! !ctags -R * &
+  au BufWritePost */git/google3/**/*.java silent! !ctags -R * &
 augroup END
 
 " Pydoc: open in new tab instead of split.
@@ -350,5 +351,6 @@ let g:vig_source_paths = ['java',
                          \ '../READONLY/google3/javatests',
                          \ 'blaze-genfiles/java']
 
-" Enable Gtags.
-source /usr/share/vim/google/gtags.vim
+" Enable Gtags (only works if project is not in experimental).
+" source /usr/share/vim/google/gtags.vim
+" nnoremap <C-]> :exe 'Gtlist ' . expand('<cword>')<CR>
