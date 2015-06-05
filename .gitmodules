@@ -1,75 +1,12 @@
-[submodule "vim/bundle/ScrollColors"]
-	path = vim/bundle/ScrollColors
-	url = https://github.com/vim-scripts/ScrollColors
-[submodule "vim/bundle/git-vim"]
-	path = vim/bundle/git-vim
-	url = https://github.com/motemen/git-vim
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule "vim/bundle/tcomment_vim"]
-	path = vim/bundle/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim
-[submodule "vim/bundle/vim-easymotion"]
-	path = vim/bundle/vim-easymotion
-	url = https://github.com/Lokaltog/vim-easymotion
 [submodule "vim/bundle/Colour-Sampler-Pack"]
 	path = vim/bundle/Colour-Sampler-Pack
 	url = https://github.com/vim-scripts/Colour-Sampler-Pack
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim
 [submodule "vim/bundle/DirDiff"]
 	path = vim/bundle/DirDiff
 	url = https://github.com/vim-scripts/DirDiff.vim
-[submodule "vim/bundle/detectindent"]
-	path = vim/bundle/detectindent
-	url = https://github.com/ciaranm/detectindent
-	ignore = dirty
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/Gundo"]
-	path = vim/bundle/Gundo
-	url = https://github.com/vim-scripts/Gundo.git
-	ignore = dirty
-[submodule "vim/bundle/conque-term"]
-	path = vim/bundle/conque-term
-	url = https://github.com/rosenfeld/conque-term
-	ignore = dirty
-[submodule "vim/bundle/vim-abolish"]
-	path = vim/bundle/vim-abolish
-	url = https://github.com/tpope/vim-abolish
-[submodule "vim/bundle/rope-vim"]
-	path = vim/bundle/rope-vim
-	url = https://github.com/klen/rope-vim
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
-[submodule "vim/bundle/vim-snippets"]
-	path = vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets
-[submodule "vim/bundle/vimwiki"]
-	path = vim/bundle/vimwiki
-	url = https://github.com/vim-scripts/vimwiki
-[submodule "vim/bundle/vim-tmux-navigator"]
-	path = vim/bundle/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim
@@ -79,12 +16,6 @@
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat
-[submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
-[submodule "vim/bundle/vim-angular"]
-	path = vim/bundle/vim-angular
-	url = https://github.com/burnettk/vim-angular
 [submodule "vim/bundle/goyo"]
 	path = vim/bundle/goyo
 	url = https://github.com/junegunn/goyo.vim
@@ -94,15 +25,6 @@
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer
-[submodule "vim/bundle/DidYouMean"]
-	path = vim/bundle/DidYouMean
-	url = https://github.com/EinfachToll/DidYouMean
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
-[submodule "vim/bundle/vim-diff-enhanced"]
-	path = vim/bundle/vim-diff-enhanced
-	url = https://github.com/chrisbra/vim-diff-enhanced
 [submodule "vim/bundle/vinegar"]
 	path = vim/bundle/vinegar
 	url = https://github.com/tpope/vim-vinegar
