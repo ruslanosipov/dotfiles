@@ -9,3 +9,6 @@ mutt/ruslano.google
 
 # Ignore Vundle files.
 vim/bundle/*
+
+# Except for Vundle itself.
+!vim/bundle/vundle
