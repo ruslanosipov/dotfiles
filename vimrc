@@ -99,6 +99,9 @@ command Bd :bp | :sp | :bn | :bd
 " Don't complain about unsaved files when switching buffers.
 set hidden
 
+" Make soft line breaks much better looking.
+set breakindent
+
 " => Leader shortcuts ----------------------------------------------------- {{{1
 
 nnoremap <Leader>o :CtrlP<CR>
