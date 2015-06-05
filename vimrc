@@ -11,46 +11,48 @@ filetype plugin indent on
 " Required Vundle setup.
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
 " Load core Google plugins.
 source /usr/share/vim/google/core.vim
 
 " => Vundle plugins ------------------------------------------------------- {{{1
 
-Bundle 'EinfachToll/DidYouMean'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'SirVer/ultisnips'
-Bundle 'ajh17/Spacegray.vim.git'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'burnettk/vim-angular'
-Bundle 'chrisbra/vim-diff-enhanced'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'ciaranm/detectindent'
-Bundle 'ervandew/supertab'
-Bundle 'honza/vim-snippets'
-Bundle 'junegunn/goyo.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'klen/rope-vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
-Bundle 'motemen/git-vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'rosenfeld/conque-term'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-pathogen'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired.git'
-Bundle 'tpope/vim-vinegar'
-Bundle 'vim-scripts/DirDiff.vim'
-Bundle 'vim-scripts/Gundo.git'
-Bundle 'vim-scripts/ScrollColors'
-Bundle 'vim-scripts/vimwiki'
+Plugin 'gmarik/vundle'
+
+Plugin 'EinfachToll/DidYouMean'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'SirVer/ultisnips'
+Plugin 'ajh17/Spacegray.vim.git'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'burnettk/vim-angular'
+Plugin 'chrisbra/vim-diff-enhanced'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ciaranm/detectindent'
+Plugin 'ervandew/supertab'
+Plugin 'honza/vim-snippets'
+Plugin 'junegunn/goyo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'klen/rope-vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
+Plugin 'motemen/git-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'rosenfeld/conque-term'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-pathogen'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired.git'
+Plugin 'tpope/vim-vinegar'
+Plugin 'vim-scripts/DirDiff.vim'
+Plugin 'vim-scripts/Gundo.git'
+Plugin 'vim-scripts/ScrollColors'
+Plugin 'vim-scripts/vimwiki'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " => Editing -------------------------------------------------------------- {{{1
 
@@ -105,8 +107,8 @@ nnoremap <Leader>r :redraw!<CR>
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
-colorscheme spacegray
+set background=light
+colorscheme PaperColor
 
 " Set terminal window title and set it back on exit.
 set title
