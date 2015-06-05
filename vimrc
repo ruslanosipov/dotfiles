@@ -352,5 +352,5 @@ let g:vig_source_paths = ['java',
                          \ 'blaze-genfiles/java']
 
 " Enable Gtags (only works if project is not in experimental).
-" source /usr/share/vim/google/gtags.vim
-" nnoremap <C-]> :exe 'Gtlist ' . expand('<cword>')<CR>
+source /usr/share/vim/google/gtags.vim
+nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<CR>
