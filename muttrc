@@ -26,6 +26,11 @@ macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
 macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
 macro pager \cb "<pipe-message>urlscan<enter>" "Follow links with urlscan"
 
+# Vi-like and misc key bindings.
+bind index gg      first-entry
+bind index G       last-entry
+bind index <space> collapse-thread
+
 source "~/.mutt/ruslano.google"
 
 source "~/.mutt/mutt-colors-solarized-dark-256"

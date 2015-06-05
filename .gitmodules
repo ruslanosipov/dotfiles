@@ -7,9 +7,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule "vim/bundle/pydoc.vim"]
-	path = vim/bundle/pydoc.vim
-	url = https://github.com/fs111/pydoc.vim
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
@@ -32,9 +29,6 @@
 	path = vim/bundle/detectindent
 	url = https://github.com/ciaranm/detectindent
 	ignore = dirty
-[submodule "python-shell-enhancement"]
-	path = python-shell-enhancement
-	url = https://github.com/jbisbee/python-shell-enhancement
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
@@ -70,9 +64,6 @@
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
-[submodule "vim/bundle/wordy"]
-	path = vim/bundle/wordy
-	url = https://github.com/reedes/vim-wordy
 [submodule "vim/bundle/vimwiki"]
 	path = vim/bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki
@@ -97,3 +88,21 @@
 [submodule "vim/bundle/goyo"]
 	path = vim/bundle/goyo
 	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/bundle/spacegray"]
+	path = vim/bundle/spacegray
+	url = https://github.com/ajh17/Spacegray.vim.git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/jlanzarotta/bufexplorer
+[submodule "vim/bundle/DidYouMean"]
+	path = vim/bundle/DidYouMean
+	url = https://github.com/EinfachToll/DidYouMean
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/bundle/vim-diff-enhanced"]
+	path = vim/bundle/vim-diff-enhanced
+	url = https://github.com/chrisbra/vim-diff-enhanced
+[submodule "vim/bundle/vinegar"]
+	path = vim/bundle/vinegar
+	url = https://github.com/tpope/vim-vinegar

@@ -35,7 +35,7 @@ nnoremap ; :
 vnoremap ; :
 
 " Map leader to a comma.
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Use system clipboard.
 set clipboard=unnamedplus
@@ -56,10 +56,19 @@ command TrimWhitespace %s/\s\+$//e
 " Command to close current buffer without closing the window.
 command Bd :bp | :sp | :bn | :bd
 
+" Don't complain about unsaved files when switching buffers.
+set hidden
+
+" => Leader shortcuts ----------------------------------------------------- {{{1
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>r :redraw!<CR>
+
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme spacegray
 
 " Set terminal window title and set it back on exit.
 set title
@@ -233,24 +242,38 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:ConqueTerm_StartMessages = 0
 
 " VimWiki: default location.
-let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
+let g:vimwiki_list = [{
+  \ 'path': '$HOME/Dropbox/wiki',
+  \ 'template_path': '$HOME/Dropbox/wiki/templates',
+  \ 'template_default': 'default',
+  \ 'template_ext': '.html'}]
+
+" Map Tagbar.
+nmap <F8> :TagbarToggle<CR>
 
 " => Google plugins ------------------------------------------------------- {{{1
 
 Glug blaze plugin[mappings]='<leader>b'
 Glug blazedeps
-Glug codefmt-google auto_filetypes+=blazebuild
+Glug codefmt-google auto_filetypes+=blazebuild,java
 Glug corpweb
 Glug critique
 Glug ft-javascript
+Glug ft-java
 Glug ft-python
+Glug ft-proto
 Glug git5
+Glug gtimporter
 Glug google-filetypes
+Glug googlestyle
+Glug languages
+Glug refactorer
 Glug relatedfiles
-Glug syntastic-google
+Glug syntastic-google checkers[java]=`['glint']`
 Glug ultisnips-google
 Glug whitespace
 Glug youcompleteme-google
+Glug scampi
 
 let g:syntastic_html_checkers = ['']
 let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
@@ -267,3 +290,19 @@ nnoremap <F10> :RelatedFilesWindow<cr>
 
 " Unfold all files by default.
 au BufRead * normal zR
+
+command Jade !/google/data/ro/teams/jade/jade %
+
+" Register Vigor and let it work in //experimental.
+source /google/data/ro/projects/vigor/vigor.vim
+let g:vig_source_paths = ['java',
+                         \ '../READONLY/google3/java',
+                         \ 'experimental',
+                         \ '../READONLY/google3/experimental',
+                         \ 'blaze-genfiles/experimental',
+                         \ 'javatests',
+                         \ '../READONLY/google3/javatests',
+                         \ 'blaze-genfiles/java']
+
+" Enable Gtags.
+source /usr/share/vim/google/gtags.vim

@@ -111,6 +111,10 @@ fi
 # POWERLINE {{{1
 # ------------------------------------------------------------------------------
 
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 powerline-daemon -q
 
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
@@ -123,3 +127,89 @@ fi
 
 # fuck P4DIFF
 P4DIFF=/bin/true
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ------------------------------------------------------------------------------
+# APPARIX {{{1
+# ------------------------------------------------------------------------------
+
+function to () {
+   if test "$2"; then
+     cd "$(apparix "$1" "$2" || echo .)";
+   else
+     cd "$(apparix "$1" || echo .)";
+   fi
+   pwd
+}
+function bm () {
+   if test "$2"; then
+      apparix --add-mark "$1" "$2";
+   elif test "$1"; then
+      apparix --add-mark "$1";
+   else
+      apparix --add-mark;
+   fi
+}
+function portal () {
+   if test "$1"; then
+      apparix --add-portal "$1";
+   else
+      apparix --add-portal;
+   fi
+}
+# function to generate list of completions from .apparixrc
+function _apparix_aliases ()
+{   cur=$2
+    dir=$3
+    COMPREPLY=()
+    if [ "$1" == "$3" ]
+    then
+        COMPREPLY=( $( cat $HOME/.apparix{rc,expand} | \
+                       grep "j,.*$cur.*," | cut -f2 -d, ) )
+    else
+        dir=`apparix -favour rOl $dir 2>/dev/null` || return 0
+        eval_compreply="COMPREPLY=( $(
+            cd "$dir"
+            \ls -d *$cur* | while read r
+            do
+                [[ -d "$r" ]] &&
+                [[ $r == *$cur* ]] &&
+                    echo \"${r// /\\ }\"
+            done
+            ) )"
+        eval $eval_compreply
+    fi
+    return 0
+}
+# command to register the above to expand when the 'to' command's args are
+# being expanded
+complete -F _apparix_aliases to
+
+# ------------------------------------------------------------------------------
+# ANDROID DEVELOPMENT {{{1
+# ------------------------------------------------------------------------------
+
+# Crow (Android emulator)
+source /google/data/ro/teams/mobile_eng_prod/crow/crow-complete.bash
+alias crow=/google/data/ro/teams/mobile_eng_prod/crow/crow.par
+
+# Use adb.turbo when possible, otherwise fall back to standard adb.
+function adb() {
+  EMU_DEPS=/google/data/ro/teams/mobile_eng_prod/emu/live/google3/
+  ANDROID_SDK=${EMU_DEPS}/third_party/java/android/android_sdk_linux/
+  EMU_SUPPORT=${EMU_DEPS}/tools/android/emulator/support/
+  ANDROID_ADB=${ANDROID_SDK}/platform-tools/adb
+  ANDROID_ADB=${ANDROID_ADB} $EMU_SUPPORT/adb.turbo "$@"
+}
+
+# Add the internal Android SDK to your PATH
+export ANDROID_SDK_HOME=/google/data/ro/teams/mobile_eng_prod/android_sdk_linux
+export PATH=${PATH}:${ANDROID_SDK_HOME}/tools:${ANDROID_SDK_HOME}/platform-tools
+
+# ------------------------------------------------------------------------------
+# LINUXBREW {{{1
+# ------------------------------------------------------------------------------
+
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"

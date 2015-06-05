@@ -25,3 +25,16 @@ alias cd..="cd .."
 # vim
 alias nerd="vim -c NERDTree"
 alias v="vim"
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Apparix aliases.
+alias als="apparix"
+
+# Blaze test DoubleCheck project.
+alias blest='blaze test //experimental/pdscrt/javatests/com/google/partnerservices/pds/pdscrt:UnitTests --test_output errors --test_summary none'
+
+# Run JavaScript linter on unsubmitted changes.
+alias git5jslint="git5 diff --name-only | sed -e 's,google3/,,' | (cd ${PWD%%/google3*}/google3 && xargs gjslint --strict)"
+
+alias g5='/google/data/ro/projects/shelltoys/g5.sar'
