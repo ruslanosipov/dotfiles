@@ -1,7 +1,6 @@
 " URL: https://github.com/ruslanosipov/dotfiles
 " Author: Ruslan Osipov
-" Description: Corporate .vimrc file. This is different from what is in a
-" personal GitHub repository.
+" Description: Corporate .vimrc file.
 
 " => Pre-load ------------------------------------------------------------- {{{1
 
@@ -101,6 +100,9 @@ set hidden
 
 " Make soft line breaks much better looking.
 set breakindent
+
+" Pretty soft break character.
+let &showbreak='↳ '
 
 " => Leader shortcuts ----------------------------------------------------- {{{1
 
@@ -225,6 +227,9 @@ if &diff
   set cmdheight=2
 endif
 
+" Unfold all files by default.
+au BufRead * normal zR
+
 " => Plugins configuration ------------------------------------------------ {{{1
 
 " NERDTree: auto close if last window.
@@ -331,9 +336,7 @@ let g:syntastic_python_checkers = ['gpylint']
 " Open relevant BUILD file.
 nnoremap <F10> :RelatedFilesWindow<cr>
 
-" Unfold all files by default.
-au BufRead * normal zR
-
+" Jade, the automatic import tool.
 command Jade !/google/data/ro/teams/jade/jade %
 
 " Register Vigor and let it work in //experimental.
