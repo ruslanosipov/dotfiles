@@ -20,6 +20,7 @@ Plugin 'gmarik/vundle'
 
 Plugin 'EinfachToll/DidYouMean'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'SirVer/ultisnips'
 Plugin 'ajh17/Spacegray.vim.git'
 Plugin 'altercation/vim-colors-solarized'
@@ -51,7 +52,6 @@ Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'vim-scripts/Gundo.git'
 Plugin 'vim-scripts/ScrollColors'
 Plugin 'vim-scripts/vimwiki'
-Plugin 'NLKNguyen/papercolor-theme'
 
 " => Editing -------------------------------------------------------------- {{{1
 
@@ -73,7 +73,7 @@ set nowritebackup
 nnoremap ; :
 vnoremap ; :
 
-" Map leader to a comma.
+" Map leader key.
 let mapleader = "\<Space>"
 
 " Use system clipboard.
