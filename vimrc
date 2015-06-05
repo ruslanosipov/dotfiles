@@ -8,11 +8,49 @@
 set nocompatible
 filetype plugin indent on
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-execute pathogen#helptags()
+" Required Vundle setup.
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
+" Load core Google plugins.
 source /usr/share/vim/google/core.vim
+
+" => Vundle plugins ------------------------------------------------------- {{{1
+
+Bundle 'EinfachToll/DidYouMean'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'SirVer/ultisnips'
+Bundle 'ajh17/Spacegray.vim.git'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'burnettk/vim-angular'
+Bundle 'chrisbra/vim-diff-enhanced'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'ciaranm/detectindent'
+Bundle 'ervandew/supertab'
+Bundle 'honza/vim-snippets'
+Bundle 'junegunn/goyo.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'klen/rope-vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mileszs/ack.vim'
+Bundle 'motemen/git-vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'rosenfeld/conque-term'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-pathogen'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired.git'
+Bundle 'tpope/vim-vinegar'
+Bundle 'vim-scripts/DirDiff.vim'
+Bundle 'vim-scripts/Gundo.git'
+Bundle 'vim-scripts/ScrollColors'
+Bundle 'vim-scripts/vimwiki'
 
 " => Editing -------------------------------------------------------------- {{{1
 
@@ -182,7 +220,7 @@ if &diff
   set cmdheight=2
 endif
 
-" => Plugins -------------------------------------------------------------- {{{1
+" => Plugins configuration ------------------------------------------------ {{{1
 
 " NERDTree: auto close if last window.
 function! s:CloseIfOnlyNerdTreeLeft()
