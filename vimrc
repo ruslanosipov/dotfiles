@@ -106,9 +106,12 @@ let &showbreak='↳ '
 
 " => Leader shortcuts ----------------------------------------------------- {{{1
 
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>] <C-]>
+nnoremap <Leader>i <C-i>
+nnoremap <Leader>o <C-o>
+nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>r :redraw!<CR>
+nnoremap <Leader>w :w<CR>
 
 " => Looks ---------------------------------------------------------------- {{{1
 
@@ -198,9 +201,6 @@ set wildignore+=env
 
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
-
-" Temporary: disable folds on opening file.
-autocmd BufRead * normal zR
 
 " => Fixes and hacks ------------------------------------------------------ {{{1
 
@@ -326,7 +326,7 @@ Glug scampi
 
 let g:syntastic_html_checkers = ['']
 let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
-let g:syntastic_javascript_gjslint_conf = '--strict'
+let g:syntastic_javascript_gjslint_args = '--strict'
 let g:syntastic_python_checkers = ['gpylint']
 
 " augroup syntastic_pylint
