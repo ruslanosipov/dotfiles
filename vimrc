@@ -37,7 +37,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'motemen/git-vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'rosenfeld/conque-term'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'tomtom/tcomment_vim'
@@ -83,18 +82,6 @@ set clipboard=unnamedplus
 set wildmenu
 set wildmode=list:longest,full
 
-command TrimWhitespace %s/\s\+$//e
-
-" This needs to be worked on. Messes up the code. Probably set for .wiki or
-" .txt formats only. Not for Python code, that's for sure.
-" augroup prose
-"     autocmd InsertEnter * set formatoptions+=a
-"     autocmd InsertLeave * set formatoptions-=a
-" augroup END
-
-" Command to close current buffer without closing the window.
-command Bd :bp | :sp | :bn | :bd
-
 " Don't complain about unsaved files when switching buffers.
 set hidden
 
@@ -103,15 +90,6 @@ set breakindent
 
 " Pretty soft break character.
 let &showbreak='↳ '
-
-" => Leader shortcuts ----------------------------------------------------- {{{1
-
-nnoremap <Leader>] <C-]>
-nnoremap <Leader>i <C-i>
-nnoremap <Leader>o <C-o>
-nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>r :redraw!<CR>
-nnoremap <Leader>w :w<CR>
 
 " => Looks ---------------------------------------------------------------- {{{1
 
@@ -137,7 +115,6 @@ set ruler
 " Display line numbers if terminal is wide enough.
 if &co > 80
   set number
-  " set relativenumber
 endif
 
 " Soft word wrap.
@@ -151,6 +128,25 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Always show statusline.
 set laststatus=2
+
+" => Custom commands ------------------------------------------------------ {{{1
+
+command TrimWhitespace %s/\s\+$//e
+
+" Command to close current buffer without closing the window.
+command Bd :bp | :sp | :bn | :bd
+
+" Jade, the automatic import tool.
+command Jade !/google/data/ro/teams/jade/jade %
+
+" => Leader shortcuts ----------------------------------------------------- {{{1
+
+nnoremap <Leader>] <C-]>
+nnoremap <Leader>i <C-i>
+nnoremap <Leader>o <C-o>
+nnoremap <Leader>p :CtrlP<cr>
+nnoremap <Leader>r :redraw!<cr>
+nnoremap <Leader>w :w<cr>
 
 " => Movement and search -------------------------------------------------- {{{1
 
@@ -230,76 +226,6 @@ endif
 " Unfold all files by default.
 au BufRead * normal zR
 
-" => Plugins configuration ------------------------------------------------ {{{1
-
-" NERDTree: auto close if last window.
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
-
-" NERDTree: ignore compiled files.
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
-
-" NERDTree: toggle.
-nnoremap <leader>nt :NERDTreeToggle<cr>
-
-" Exuberant Ctags: autogenerate on file write.
-augroup ctags
-  autocmd!
-  au BufWritePost */git/google3/**/*.py silent! !ctags -R * &
-  au BufWritePost */git/google3/**/*.java silent! !ctags -R * &
-augroup END
-
-" Pydoc: open in new tab instead of split.
-let g:pydoc_open_cmd = 'tabnew'
-
-" Pydoc: disable search term highlight.
-let g:pydoc_highlight = 0
-
-" Map Gundo.
-nnoremap <F5> :GundoToggle<cr>
-
-" Force Gundo preview to the bottom.
-let g:gundo_preview_bottom = 1
-
-" Synastic: Make :lnext work.
-let g:syntastic_always_populate_loc_list = 1
-
-" DetectIndent: Enable and configure.
-augroup detectindent
-  autocmd!
-  autocmd BufReadPost * :DetectIndent
-augroup END
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 2
-
-" UltiSnips: Compatibility with YouCompleteMe via SuperTab.
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" ConqueTerm: Ignore warnings.
-let g:ConqueTerm_StartMessages = 0
-
-" VimWiki: default location.
-let g:vimwiki_list = [{
-  \ 'path': '$HOME/Dropbox/wiki',
-  \ 'template_path': '$HOME/Dropbox/wiki/templates',
-  \ 'template_default': 'default',
-  \ 'template_ext': '.html'}]
-
-" Map Tagbar.
-nmap <F8> :TagbarToggle<CR>
-
 " => Google plugins ------------------------------------------------------- {{{1
 
 Glug blaze plugin[mappings]='<leader>b'
@@ -326,21 +252,67 @@ Glug whitespace
 Glug youcompleteme-google
 Glug scampi
 
-let g:syntastic_html_checkers = ['']
-let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
-let g:syntastic_javascript_gjslint_args = '--strict'
-let g:syntastic_python_checkers = ['gpylint']
+" Enable Gtags (only works if project is not in experimental).
+source /usr/share/vim/google/gtags.vim
+nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
 
-" augroup syntastic_pylint
-"   autocmd!
-"   autocmd BufWritePost *.py exe ":SyntasticCheck gpylint"
-" augroup END
+" => Plugins configuration ------------------------------------------------ {{{1
+
+" NERDTree: auto close if last window.
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+
+" NERDTree: ignore compiled files.
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+
+" Exuberant Ctags: autogenerate on file write.
+augroup ctags
+  autocmd!
+  au BufWritePost */git/google3/**/*.py silent! !ctags -R * &
+  au BufWritePost */git/google3/**/*.java silent! !ctags -R * &
+augroup END
+
+" Force Gundo preview to the bottom.
+let g:gundo_preview_bottom = 1
+
+" Map Gundo.
+nnoremap <F5> :GundoToggle<cr>
+
+" DetectIndent: Enable and configure.
+augroup detectindent
+  autocmd!
+  autocmd BufReadPost * :DetectIndent
+augroup END
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 2
+
+" UltiSnips: Compatibility with YouCompleteMe via SuperTab.
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" VimWiki: default location.
+let g:vimwiki_list = [{
+  \ 'path': '$HOME/Dropbox/wiki',
+  \ 'template_path': '$HOME/Dropbox/wiki/templates',
+  \ 'template_default': 'default',
+  \ 'template_ext': '.html'}]
+
+" Map Tagbar.
+nnoremap <F8> :TagbarToggle<cr>
 
 " Open relevant BUILD file.
 nnoremap <F10> :RelatedFilesWindow<cr>
-
-" Jade, the automatic import tool.
-command Jade !/google/data/ro/teams/jade/jade %
 
 " Register Vigor and let it work in //experimental.
 source /google/data/ro/projects/vigor/vigor.vim
@@ -353,6 +325,9 @@ let g:vig_source_paths = ['java',
                          \ '../READONLY/google3/javatests',
                          \ 'blaze-genfiles/java']
 
-" Enable Gtags (only works if project is not in experimental).
-source /usr/share/vim/google/gtags.vim
-nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<CR>
+" Synastic configuration.
+let g:syntastic_always_populate_loc_list = 1  " Make :lnext work.
+let g:syntastic_html_checkers = ['']
+let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
+let g:syntastic_javascript_gjslint_args = '--strict'
+let g:syntastic_python_checkers = ['gpylint']
