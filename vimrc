@@ -307,6 +307,8 @@ Glug blazedeps
 Glug codefmt-google auto_filetypes+=blazebuild,java
 Glug corpweb
 Glug critique
+Glug coverage
+Glug coverage-google
 Glug ft-javascript
 Glug ft-java
 Glug ft-python

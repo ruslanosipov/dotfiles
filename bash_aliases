@@ -40,3 +40,6 @@ alias git5jslint="git5 diff --name-only | sed -e 's,google3/,,' | (cd ${PWD%%/go
 
 # Wrapper around git5.
 alias g5='/google/data/ro/projects/shelltoys/g5.sar'
+
+# Launch Vim with X to use event (async commands).
+alias vim="vim --servername loglady"
