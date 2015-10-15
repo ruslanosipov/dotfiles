@@ -1,6 +1,19 @@
 " URL: https://github.com/ruslanosipov/dotfiles
 " Author: Ruslan Osipov
-" Description: Corporate .vimrc file.
+" Description: Personal/corporate .vimrc file.
+"
+" All the plugins are managed via Vundle, run :PluginInstall to install all
+" the plugins from Github, :PluginUpdate to update. Leader key is the
+" spacebar.
+"
+" What function keys do (also see: Custom commands, Leader shortcuts):
+"   F5: toggle Gundo window.
+"   F8: toggle Tagbar window.
+"   F10 (Google-specific): show corresponding test/build/etc files.
+
+" => Constants ------------------------------------------------------------ {{{1
+
+let usegooglevim = 0
 
 " => Pre-load ------------------------------------------------------------- {{{1
 
@@ -12,7 +25,9 @@ set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " Load core Google plugins.
-source /usr/share/vim/google/core.vim
+if (usegooglevim)
+  source /usr/share/vim/google/core.vim
+endif
 
 " => Vundle plugins ------------------------------------------------------- {{{1
 
@@ -59,9 +74,9 @@ syntax on
 " Indentation settings.
 set autoindent
 set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Disable backups and .swp files.
 set nobackup
@@ -131,13 +146,16 @@ set laststatus=2
 
 " => Custom commands ------------------------------------------------------ {{{1
 
+" Trim trailing whitespace in the file.
 command TrimWhitespace %s/\s\+$//e
 
 " Command to close current buffer without closing the window.
 command Bd :bp | :sp | :bn | :bd
 
 " Jade, the automatic import tool.
-command Jade !/google/data/ro/teams/jade/jade %
+if (usegooglevim)
+  command Jade !/google/data/ro/teams/jade/jade %
+endif
 
 " => Leader shortcuts ----------------------------------------------------- {{{1
 
@@ -145,8 +163,9 @@ nnoremap <Leader>] <C-]>
 nnoremap <Leader>i <C-i>
 nnoremap <Leader>o <C-o>
 nnoremap <Leader>p :CtrlP<cr>
+nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>r :redraw!<cr>
-nnoremap <Leader>w :w<cr>
+nnoremap <Leader>w :w<cr>:redraw!<cr>
 
 " => Movement and search -------------------------------------------------- {{{1
 
@@ -211,13 +230,6 @@ if has("win32") || has("win64") || has("win32unix")
   let g:NERDTreeDirArrows = 0
 endif
 
-" Solarized Mac compatibility.
-if has('gui_running')
-  set guioptions=
-  set guifont=M+\ 1mn\ Regular\ 14
-  set g:airline_symbols_space="\ua0"
-endif
-
 " Increase lower status bar height in diff mode.
 if &diff
   set cmdheight=2
@@ -226,35 +238,43 @@ endif
 " Unfold all files by default.
 au BufRead * normal zR
 
-" => Google plugins ------------------------------------------------------- {{{1
+" => Google plugins (see go/vim) ------------------------------------------ {{{1
 
-Glug blaze plugin[mappings]='<leader>b'
-Glug blazedeps
-Glug codefmt-google auto_filetypes+=blazebuild,java
-Glug corpweb
-Glug critique
-Glug coverage
-Glug coverage-google
-Glug ft-javascript
-Glug ft-java
-Glug ft-python
-Glug ft-proto
-Glug git5
-Glug gtimporter
-Glug google-filetypes
-Glug googlestyle
-Glug languages
-Glug refactorer
-Glug relatedfiles
-Glug syntastic-google checkers[java]=`['glint']`
-Glug ultisnips-google
-Glug whitespace
-Glug youcompleteme-google
-Glug scampi
+if (usegooglevim)
+  Glug blaze plugin[mappings]='<leader>b'
+  Glug blazedeps
+  Glug codefmt-google auto_filetypes+=blazebuild,java
+  Glug corpweb
+  Glug critique
+  Glug coverage
+  Glug coverage-google
+  Glug ft-javascript
+  Glug ft-java
+  Glug ft-python
+  Glug ft-proto
+  Glug git5
+  Glug gtimporter
+  Glug google-filetypes
+  Glug googlestyle
+  Glug languages
+  Glug refactorer
+  Glug relatedfiles
+  Glug syntastic-google checkers[java]=`['glint']`
+  Glug ultisnips-google
+  Glug whitespace
+  Glug youcompleteme-google
+  Glug scampi
 
-" Enable Gtags (only works if project is not in experimental).
-source /usr/share/vim/google/gtags.vim
-nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
+  " Enable Gtags (only works if project is not in //google3/experimental).
+  source /usr/share/vim/google/gtags.vim
+  nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
+
+  " Open relevant BUILD file.
+  nnoremap <F10> :RelatedFilesWindow<cr>
+
+  " Register Vigor.
+  source /google/data/ro/projects/vigor/vigor.vim
+endif
 
 " => Plugins configuration ------------------------------------------------ {{{1
 
@@ -275,8 +295,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " Exuberant Ctags: autogenerate on file write.
 augroup ctags
   autocmd!
-  au BufWritePost */git/google3/**/*.py silent! !ctags -R * &
-  au BufWritePost */git/google3/**/*.java silent! !ctags -R * &
+  au BufWritePost *.py silent! !ctags -R * &
 augroup END
 
 " Force Gundo preview to the bottom.
@@ -292,6 +311,9 @@ augroup detectindent
 augroup END
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
+
+" Ignore line length errors.
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 " UltiSnips: Compatibility with YouCompleteMe via SuperTab.
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -310,20 +332,6 @@ let g:vimwiki_list = [{
 
 " Map Tagbar.
 nnoremap <F8> :TagbarToggle<cr>
-
-" Open relevant BUILD file.
-nnoremap <F10> :RelatedFilesWindow<cr>
-
-" Register Vigor and let it work in //experimental.
-source /google/data/ro/projects/vigor/vigor.vim
-let g:vig_source_paths = ['java',
-                         \ '../READONLY/google3/java',
-                         \ 'experimental',
-                         \ '../READONLY/google3/experimental',
-                         \ 'blaze-genfiles/experimental',
-                         \ 'javatests',
-                         \ '../READONLY/google3/javatests',
-                         \ 'blaze-genfiles/java']
 
 " Synastic configuration.
 let g:syntastic_always_populate_loc_list = 1  " Make :lnext work.

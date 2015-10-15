@@ -1,2 +1,2 @@
-" To help with 80-column restriction.
-set colorcolumn=81
+" To help with 100-column restriction.
+set colorcolumn=101
