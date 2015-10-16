@@ -26,8 +26,3 @@ Replaced dotfiles are saved at `~/dotfiles-backup/`
     rm -rf ~/dotfiles-backup
 
 You may want to have `ctags` installed.
-
-## What's inside
-
-`set_prompt()` allows switching between pre-configured PS1 (bash prompt)
-styles on the go, see `.bash_profile` for usage.
