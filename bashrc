@@ -1,4 +1,4 @@
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
 # => Constants ------------------------------------------------------------- {{{1
@@ -23,28 +23,28 @@ fi
 
 # => Environment configuration -------------------------------------------- {{{1
 
-# history settings
+# History settings.
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=100000
 HISTFILESIZE=200000
 
-# write history after every command
+# Write history after every command.
 export PROMPT_COMMAND='history -a'
 
-# shell opts
+# Shell opts.
 shopt -s histappend
 shopt -s checkwinsize
 
-# more colors in aterminal
+# More colors in a terminal.
 export TERM=xterm-256color
 
-# more color if running tmux
+# More color if running tmux.
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-# text editor
+# Text editor.
 export EDITOR=vim
 
-# put ~/bin on PATH if it exists
+# Put ~/bin on PATH if it exists.
 test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 
 # => Prompt --------------------------------------------------------------- {{{1
@@ -55,7 +55,8 @@ PS1='\w$ '
 
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
-fi 
+fi
+
 # => Powerline ------------------------------------------------------------ {{{1
 
 if [ $ENABLE_POWERLINE == 1 ]; then
@@ -145,8 +146,9 @@ function _apparix_aliases ()
     return 0
 }
 
-complete -F _apparix_aliases to
+alias als="apparix"
 
+complete -F _apparix_aliases to
 
 # => Android development -------------------------------------------------- {{{1
 

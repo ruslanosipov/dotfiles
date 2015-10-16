@@ -1,0 +1,5 @@
+set from              = ""
+set hostname          = gmail.com
+set imap_pass         = ""
+set imap_user         = ""
+set realname          = ""

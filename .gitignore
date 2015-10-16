@@ -1,14 +1,12 @@
 # Generated files.
 vim/.netrwhist
 
-# Mutt aliases list.
-mutt/aliases.txt
-
-# Google account for Mutt.
-mutt/ruslano.google
-
 # Ignore Vundle files.
 vim/bundle/*
 
 # Except for Vundle itself.
 !vim/bundle/vundle
+
+# Mutt account files
+mutt/account_*
+!mutt/account_template
