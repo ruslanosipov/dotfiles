@@ -182,8 +182,10 @@ export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Setup virtualenvwrapper.
-source /usr/local/bin/virtualenvwrapper.sh
-export WORKON_HOME=~/envs
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+   source /usr/local/bin/virtualenvwrapper.sh
+   export WORKON_HOME=~/envs
+fi
 
 # Fuzzy file autocomplete.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
