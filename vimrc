@@ -36,11 +36,9 @@ Plugin 'gmarik/vundle'
 Plugin 'EinfachToll/DidYouMean'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'SirVer/ultisnips'
 Plugin 'ajh17/Spacegray.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'burnettk/vim-angular'
-Plugin 'chrisbra/vim-diff-enhanced'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ciaranm/detectindent'
 Plugin 'ervandew/supertab'
@@ -66,6 +64,11 @@ Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'vim-scripts/Gundo.git'
 Plugin 'vim-scripts/ScrollColors'
 Plugin 'vim-scripts/vimwiki'
+
+if v:version > 703
+  Plugin 'SirVer/ultisnips'
+  Plugin 'chrisbra/vim-diff-enhanced'
+endif
 
 " => Editing -------------------------------------------------------------- {{{1
 
@@ -101,7 +104,9 @@ set wildmode=list:longest,full
 set hidden
 
 " Make soft line breaks much better looking.
-set breakindent
+if v:version > 703
+  set breakindent
+endif
 
 " Pretty soft break character.
 let &showbreak='↳ '
