@@ -7,6 +7,12 @@ export ENABLE_ANDROID_DEVELOPMENT=0
 export ENABLE_GOOGLE_STACK=0
 export ENABLE_POWERLINE=0
 
+if [ `uname` == "Darwin" ]; then
+   export IS_MAC=1
+else
+   export IS_MAC=0
+fi
+
 # => Includes ------------------------------------------------------------- {{{1
 
 if [ -f /etc/bash_completion ]; then

@@ -114,7 +114,7 @@ let &showbreak='↳ '
 " => Looks ---------------------------------------------------------------- {{{1
 
 set background=light
-colorscheme PaperColor
+colorscheme Tomorrow-Night
 
 " Set terminal window title and set it back on exit.
 set title

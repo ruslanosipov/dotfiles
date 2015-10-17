@@ -1,14 +1,16 @@
 # git
 alias g="git"
-alias del="git ls-files --deleted | xargs git rm"
+alias gitrm="git ls-files --deleted | xargs git rm"
 
 # filesystem
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+if [ $IS_MAC == 0 ]; then
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -22,7 +24,6 @@ alias cd..="cd .."
 
 # vim
 alias nerd="vim -c NERDTree"
-alias vim="vim --servername loglady"
 alias v="vim"
 
 # Pipe command to this to display an alert.
