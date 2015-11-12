@@ -1,3 +1,4 @@
 --pager=LESS=FSRX less -r
 --ignore-file=match:tags
 --ignore-dir=.env
+--ignore-dir=.ropeproject

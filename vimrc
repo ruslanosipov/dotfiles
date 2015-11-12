@@ -45,13 +45,13 @@ Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'junegunn/goyo.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'klen/rope-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'motemen/git-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic.git'
+Plugin 'squarefrog/tomorrow-night.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive.git'
@@ -113,8 +113,8 @@ let &showbreak='↳ '
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=light
-colorscheme Tomorrow-Night
+set background=dark
+colorscheme tomorrow-night
 
 " Set terminal window title and set it back on exit.
 set title
@@ -143,9 +143,6 @@ set linebreak
 " Prettier display of long lines of text.
 set display+=lastline
 
-" Powerline.
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
 " Always show statusline.
 set laststatus=2
 
@@ -170,7 +167,8 @@ nnoremap <Leader>o <C-o>
 nnoremap <Leader>p :CtrlP<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>r :redraw!<cr>
-nnoremap <Leader>w :w<cr>:redraw!<cr>
+nnoremap <Leader>w :w<cr>
+nnoremap <Leader>a :Ack! <C-r><C-w><cr>
 
 " => Movement and search -------------------------------------------------- {{{1
 
@@ -179,10 +177,10 @@ set ignorecase
 set smartcase
 
 " Fast split navigation.
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
 
 " Absolute movement for word-wrapped lines.
 nnoremap j gj
