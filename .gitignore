@@ -12,4 +12,4 @@ mutt/account_*
 !mutt/account_template
 
 # Machine-specific changes to bashrc.
-bashrc.local
+bashrc.*

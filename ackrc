@@ -1,4 +1,9 @@
---pager=LESS=FSRX less -r
---ignore-file=match:tags
 --ignore-dir=.env
 --ignore-dir=.ropeproject
+--ignore-dir=blaze-bin
+--ignore-dir=blaze-genfiles
+--ignore-dir=blaze-google
+--ignore-dir=blaze-out
+--ignore-dir=blaze-testlogs
+--ignore-file=match:tags
+--pager=LESS=FSRX less -r

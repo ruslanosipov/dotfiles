@@ -31,3 +31,5 @@
 	prompt = false
 [include]
 	path = ~/.gitconfig.local
+[google]
+	uplink = false

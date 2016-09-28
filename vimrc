@@ -48,6 +48,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'motemen/git-vim'
+Plugin 'nvie/vim-flake8'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic.git'
@@ -113,8 +114,8 @@ let &showbreak='↳ '
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
-colorscheme tomorrow-night
+set background=light
+colorscheme spacegray
 
 " Set terminal window title and set it back on exit.
 set title
@@ -248,29 +249,30 @@ if (usegooglevim)
   Glug blazedeps
   Glug codefmt-google auto_filetypes+=blazebuild,java
   Glug corpweb
-  Glug critique
   Glug coverage
   Glug coverage-google
-  Glug ft-javascript
+  Glug critique
   Glug ft-java
-  Glug ft-python
+  Glug ft-javascript
   Glug ft-proto
+  Glug ft-python
   Glug git5
-  Glug gtimporter
   Glug google-filetypes
   Glug googlestyle
+  Glug grok
+  Glug gtimporter
   Glug languages
   Glug refactorer
   Glug relatedfiles
+  Glug scampi
   Glug syntastic-google checkers[java]=`['glint']`
   Glug ultisnips-google
   Glug whitespace
   Glug youcompleteme-google
-  Glug scampi
 
   " Enable Gtags (only works if project is not in //google3/experimental).
-  source /usr/share/vim/google/gtags.vim
-  nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
+  " source /usr/share/vim/google/gtags.vim
+  " nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
 
   " Open relevant BUILD file.
   nnoremap <F10> :RelatedFilesWindow<cr>
@@ -298,7 +300,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " Exuberant Ctags: autogenerate on file write.
 augroup ctags
   autocmd!
-  au BufWritePost *.py silent! !ctags -R * &
+  au BufWritePost *.py silent! !ctags -R * 2>/dev/null &
 augroup END
 
 " Force Gundo preview to the bottom.
