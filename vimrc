@@ -18,10 +18,12 @@ let usegooglevim = 0
 " => Pre-load ------------------------------------------------------------- {{{1
 
 set nocompatible
+
 filetype plugin indent on
 
 " Required Vundle setup.
 set runtimepath+=~/.vim/bundle/vundle
+set runtimepath+=$GOROOT/misc/vim
 call vundle#rc()
 
 " Load core Google plugins.
@@ -42,6 +44,7 @@ Plugin 'burnettk/vim-angular'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ciaranm/detectindent'
 Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
 Plugin 'junegunn/goyo.vim'
 Plugin 'kien/ctrlp.vim'
