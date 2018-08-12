@@ -1,18 +1,12 @@
 " URL: https://github.com/ruslanosipov/dotfiles
 " Author: Ruslan Osipov
-" Description: Personal/corporate .vimrc file.
+" Description: Personal .vimrc file with a few lines to import corp .vimrc.
 "
-" All the plugins are managed via Vundle, run :PluginInstall to install all
-" the plugins from Github, :PluginUpdate to update. Leader key is the
-" spacebar.
+" All the plugins are managed via vim-plugin, run :PlugInstall to install all
+" the plugins from Github, :PlugUpdate to update. Leader key is the spacebar.
 "
 " What function keys do (also see: Custom commands, Leader shortcuts):
 "   F5: toggle Gundo window.
-"   F10 (Google-specific): show corresponding test/build/etc files.
-
-" => Constants ------------------------------------------------------------ {{{1
-
-let usegooglevim = 0
 
 " => Pre-load ------------------------------------------------------------- {{{1
 
@@ -25,9 +19,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Load core Google plugins.
-if (usegooglevim)
-  source /usr/share/vim/google/core.vim
+" Load Google-specific .vimrc if it exists.
+if !empty(glob('~/.vimrc.google'))
+  source ~/.vimrc.google
 endif
 
 " => vim-plug plugins ----------------------------------------------------- {{{1
@@ -145,16 +139,8 @@ set laststatus=2
 
 " => Custom commands ------------------------------------------------------ {{{1
 
-" Trim trailing whitespace in the file.
-command TrimWhitespace %s/\s\+$//e
-
 " Command to close current buffer without closing the window.
 command Bd :bp | :sp | :bn | :bd
-
-" Jade, the automatic import tool.
-if (usegooglevim)
-  command Jade !/google/data/ro/teams/jade/jade %
-endif
 
 " => Leader shortcuts ----------------------------------------------------- {{{1
 
@@ -238,68 +224,17 @@ endif
 " Unfold all files by default.
 au BufRead * normal zR
 
-" => Google plugins (see go/vim) ------------------------------------------ {{{1
-
-if (usegooglevim)
-  Glug blaze plugin[mappings]='<leader>b'
-  Glug blazedeps
-  Glug codefmt-google auto_filetypes+=blazebuild,java
-  Glug corpweb
-  Glug coverage
-  Glug coverage-google
-  Glug critique
-  Glug ft-java
-  Glug ft-javascript
-  Glug ft-proto
-  Glug ft-python
-  Glug git5
-  Glug google-filetypes
-  Glug googlestyle
-  Glug grok
-  Glug gtimporter
-  Glug languages
-  Glug refactorer
-  Glug relatedfiles
-  Glug scampi
-  Glug syntastic-google checkers[java]=`['glint']`
-  Glug ultisnips-google
-  Glug whitespace
-  Glug youcompleteme-google
-
-  " Enable Gtags (only works if project is not in //google3/experimental).
-  " source /usr/share/vim/google/gtags.vim
-  " nnoremap <Leader><C-]> :exe 'Gtlist ' . expand('<cword>')<cr>
-
-  " Open relevant BUILD file.
-  nnoremap <F10> :RelatedFilesWindow<cr>
-
-  " Register Vigor.
-  source /google/data/ro/projects/vigor/vigor.vim
-endif
-
 " => Plugins configuration ------------------------------------------------ {{{1
 
-" NERDTree: auto close if last window.
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
-
-" NERDTree: ignore compiled files.
+" NERDTree.
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Force Gundo preview to the bottom.
+" Gundo.
 let g:gundo_preview_bottom = 1
-
-" Map Gundo.
 nnoremap <F5> :GundoToggle<cr>
 
-" VimWiki: default location.
+" VimWiki.
 let g:vimwiki_list = [{
   \ 'path': '$HOME/Dropbox/wiki',
   \ 'template_path': '$HOME/Dropbox/wiki/templates',
