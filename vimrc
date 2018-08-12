@@ -8,7 +8,6 @@
 "
 " What function keys do (also see: Custom commands, Leader shortcuts):
 "   F5: toggle Gundo window.
-"   F8: toggle Tagbar window.
 "   F10 (Google-specific): show corresponding test/build/etc files.
 
 " => Constants ------------------------------------------------------------ {{{1
@@ -17,62 +16,56 @@ let usegooglevim = 0
 
 " => Pre-load ------------------------------------------------------------- {{{1
 
-set nocompatible
-
 filetype plugin indent on
 
-" Required Vundle setup.
-set runtimepath+=~/.vim/bundle/vundle
-set runtimepath+=$GOROOT/misc/vim
-call vundle#rc()
+" Download and install vim-plug.
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " Load core Google plugins.
 if (usegooglevim)
   source /usr/share/vim/google/core.vim
 endif
 
-" => Vundle plugins ------------------------------------------------------- {{{1
+" => vim-plug plugins ----------------------------------------------------- {{{1
 
-Plugin 'gmarik/vundle'
+call plug#begin()
 
-Plugin 'EinfachToll/DidYouMean'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'ajh17/Spacegray.vim.git'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'burnettk/vim-angular'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ciaranm/detectindent'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/goyo.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
-Plugin 'motemen/git-vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'squarefrog/tomorrow-night.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'tpope/vim-pathogen'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired.git'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-scripts/DirDiff.vim'
-Plugin 'vim-scripts/Gundo.git'
-Plugin 'vim-scripts/ScrollColors'
-Plugin 'vim-scripts/vimwiki'
+Plug 'EinfachToll/DidYouMean'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajh17/Spacegray.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'burnettk/vim-angular'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ciaranm/detectindent'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'motemen/git-vim'
+Plug 'nvie/vim-flake8'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'squarefrog/tomorrow-night.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-pathogen'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/DirDiff.vim'
+Plug 'vim-scripts/Gundo'
+Plug 'vim-scripts/ScrollColors'
+Plug 'vim-scripts/vimwiki'
 
-if v:version > 703
-  Plugin 'SirVer/ultisnips'
-  Plugin 'chrisbra/vim-diff-enhanced'
-endif
+call plug#end()
 
 " => Editing -------------------------------------------------------------- {{{1
 
@@ -117,7 +110,7 @@ let &showbreak='↳ '
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=light
+set background=dark
 colorscheme spacegray
 
 " Set terminal window title and set it back on exit.
@@ -300,36 +293,11 @@ endfunction
 " NERDTree: ignore compiled files.
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Exuberant Ctags: autogenerate on file write.
-augroup ctags
-  autocmd!
-  au BufWritePost *.py silent! !ctags -R * 2>/dev/null &
-augroup END
-
 " Force Gundo preview to the bottom.
 let g:gundo_preview_bottom = 1
 
 " Map Gundo.
 nnoremap <F5> :GundoToggle<cr>
-
-" DetectIndent: Enable and configure.
-augroup detectindent
-  autocmd!
-  autocmd BufReadPost * :DetectIndent
-augroup END
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 2
-
-" Ignore line length errors.
-let g:syntastic_python_flake8_args='--ignore=E501'
-
-" UltiSnips: Compatibility with YouCompleteMe via SuperTab.
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " VimWiki: default location.
 let g:vimwiki_list = [{
@@ -337,13 +305,3 @@ let g:vimwiki_list = [{
   \ 'template_path': '$HOME/Dropbox/wiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
-
-" Map Tagbar.
-nnoremap <F8> :TagbarToggle<cr>
-
-" Synastic configuration.
-let g:syntastic_always_populate_loc_list = 1  " Make :lnext work.
-let g:syntastic_html_checkers = ['']
-let g:syntastic_javascript_checkers = ['gjslint', 'jshint']
-let g:syntastic_javascript_gjslint_args = '--strict'
-let g:syntastic_python_checkers = ['gpylint']

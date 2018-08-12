@@ -1,11 +1,9 @@
 # Generated files.
 vim/.netrwhist
 
-# Ignore Vundle files.
-vim/bundle/*
-
-# Except for Vundle itself.
-!vim/bundle/vundle
+# Ignore vim-plug
+vim/autoload/*
+vim/plugged/*
 
 # Mutt account files
 mutt/account_*
