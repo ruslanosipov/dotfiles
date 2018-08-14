@@ -1,7 +1,3 @@
-# git
-alias g="git"
-alias gitrm="git ls-files --deleted | xargs git rm"
-
 # filesystem
 if [ $IS_MAC == 0 ]; then
   alias ls='ls --color=auto'
@@ -21,15 +17,3 @@ alias l='ls -CF'
 alias xclip="xclip -selection c"
 alias r="fc -s"
 alias cd..="cd .."
-
-# vim
-alias nerd="vim -c NERDTree"
-alias v="vim"
-
-# Pipe command to this to display an alert.
-alias alert='notify-send --urgency=normal -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Wrapper around git5.
-if [ $ENABLE_GOOGLE_STACK == 1 ]; then
-  alias g5='/google/data/ro/projects/shelltoys/g5.sar'
-fi

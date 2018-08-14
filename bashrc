@@ -1,6 +1,14 @@
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
+# => Constants ------------------------------------------------------------ {{{1
+
+if [ `uname` == "Darwin" ]; then
+   export IS_MAC=1
+else
+   export IS_MAC=0
+fi
+
 # => Includes ------------------------------------------------------------- {{{1
 
 if [ -f /etc/bash_completion ]; then
