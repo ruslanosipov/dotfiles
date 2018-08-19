@@ -240,3 +240,4 @@ let g:vimwiki_list = [{
   \ 'template_path': '$HOME/Dropbox/wiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
+let g:vimwiki_dir_link = 'index'
