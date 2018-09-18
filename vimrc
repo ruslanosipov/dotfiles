@@ -20,8 +20,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " Load Google-specific .vimrc if it exists.
-if !empty(glob('~/.vimrc.google'))
-  source ~/.vimrc.google
+if !empty(glob('$HOME/.vimrc.google'))
+  source $HOME/.vimrc.google
 endif
 
 " => vim-plug plugins ----------------------------------------------------- {{{1
