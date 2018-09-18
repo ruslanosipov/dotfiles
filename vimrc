@@ -28,36 +28,26 @@ endif
 
 call plug#begin()
 
-Plug 'EinfachToll/DidYouMean'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ajh17/Spacegray.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'burnettk/vim-angular'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ciaranm/detectindent'
-Plug 'ervandew/supertab'
-Plug 'fatih/vim-go'
-Plug 'honza/vim-snippets'
-Plug 'junegunn/goyo.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'mileszs/ack.vim'
-Plug 'motemen/git-vim'
-Plug 'nvie/vim-flake8'
-Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/nerdtree'
-Plug 'squarefrog/tomorrow-night.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-pathogen'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-scripts/DirDiff.vim'
-Plug 'vim-scripts/Gundo'
-Plug 'vim-scripts/ScrollColors'
-Plug 'vim-scripts/vimwiki'
+Plug 'EinfachToll/DidYouMean'            " filename suggestions
+Plug 'Lokaltog/vim-easymotion'           " better move commands
+Plug 'NLKNguyen/papercolor-theme'        " colorscheme
+Plug 'ajh17/Spacegray.vim'               " colorscheme
+Plug 'altercation/vim-colors-solarized'  " colorscheme
+Plug 'christoomey/vim-tmux-navigator'    " better tmux integration
+Plug 'ervandew/supertab'                 " more powerful <tab>
+Plug 'junegunn/goyo.vim'                 " distraction-free writing
+Plug 'kien/ctrlp.vim'                    " <ctrl-p> to fuzzy search
+Plug 'mileszs/ack.vim'                   " ack integration
+Plug 'scrooloose/nerdtree'               " prettier netrw output
+Plug 'squarefrog/tomorrow-night.vim'     " colorscheme
+Plug 'tomtom/tcomment_vim'               " commenting helpers
+Plug 'tpope/vim-abolish'                 " change case on the fly
+Plug 'tpope/vim-repeat'                  " repeat everything
+Plug 'tpope/vim-surround'                " superchange surround commands
+Plug 'tpope/vim-unimpaired'              " pairs of helpful commands
+Plug 'tpope/vim-vinegar'                 " - to open netrw
+Plug 'vim-scripts/Gundo'                 " visualize the undo tree
+Plug 'vim-scripts/vimwiki'               " personal wiki
 
 call plug#end()
 
