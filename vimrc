@@ -84,13 +84,9 @@ set wildmode=list:longest,full
 " Don't complain about unsaved files when switching buffers.
 set hidden
 
-" Make soft line breaks much better looking.
-if v:version > 703
-  set breakindent
-endif
-
-" Pretty soft break character.
-let &showbreak='↳ '
+" Enable persistent undo.
+set undofile
+set undodir=$HOME/.vim/undodir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
@@ -126,6 +122,12 @@ set display+=lastline
 
 " Always show statusline.
 set laststatus=2
+
+" Make soft line breaks much better looking.
+set breakindent
+
+" Pretty soft break character.
+let &showbreak='↳ '
 
 " => Custom commands ------------------------------------------------------ {{{1
 
