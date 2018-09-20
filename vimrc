@@ -14,14 +14,17 @@ filetype plugin indent on
 
 " Download and install vim-plug.
 if has('win32')
-  let s:plug_path='$USERPROFILE/vimfiles/autoload/plug.vim'
+  if empty(glob('$HOME/vimfiles/autoload/plug.vim'))
+    silent !curl -fLo \%USERPROFILE\%/vimfiles/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 else
-  let s:plug_path='$HOME/.vim/autoload/plug.vim'
-endif
-if empty(glob(s:plug_path))
-  execute '!curl -fLo ' . s:plug_path . ' --create-dirs ' .
-    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  if empty(glob('$HOME/.vim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 endif
 
 " Load Google-specific .vimrc if it exists.
