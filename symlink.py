@@ -41,7 +41,7 @@ else:
 home_dir = os.environ[HOME_ENV]
 # Name of the directory where dotfiles are located.
 dotfiles_dir = os.path.join(
-        home_dir, '_' if IS_WINDOWS else '.' + "dotfiles")
+        home_dir, ('_' if IS_WINDOWS else '.') + "dotfiles")
 # List of things we should ignore in the dotfiles directory.
 ignore = [
     ".git",
