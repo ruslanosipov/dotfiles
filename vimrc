@@ -2,7 +2,7 @@
 " Author: Ruslan Osipov
 " Description: Personal .vimrc file with a few lines to import corp .vimrc.
 "
-" All the plugins are managed via vim-plugin, run :PlugInstall to install all
+" All the plugins are managed via vim-plug, run :PlugInstall to install all
 " the plugins from Github, :PlugUpdate to update. Leader key is the spacebar.
 "
 " What function keys do (also see: Custom commands, Leader shortcuts):
@@ -90,8 +90,8 @@ set undodir=$HOME/.vim/undodir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
-colorscheme spacegray
+set background=light
+colorscheme PaperColor
 
 " Set terminal window title and set it back on exit.
 set title
@@ -100,7 +100,7 @@ let &titleold = getcwd()
 " Shorten press ENTER to continue messages.
 set shortmess=atI
 
-" Show last command.
+" Show last command in the status line.
 set showcmd
 
 " Highlight cursor line.
@@ -197,13 +197,10 @@ set foldmethod=marker
 
 " => Fixes and hacks ------------------------------------------------------ {{{1
 
-" Ignore mouse (in GVIM).
-set mouse=c
-
-" Fix backspace behavior in GVIM.
+" Fix backspace behavior across terminals.
 set bs=2
 
-" NERDTree arrows in Windows.
+" Hide NERDTree arrows in Windows.
 if has("win32") || has("win64") || has("win32unix")
   let g:NERDTreeDirArrows = 0
 endif
