@@ -46,11 +46,11 @@ dotfiles_dir = os.path.join(home_dir, DOTFILE_PREFIX + "dotfiles")
 # List of things we should ignore in the dotfiles directory.
 ignore = [
     ".git",
+    ".gitignore",
+    ".gitmodules",
     "LICENSE",
     "README.md",
     "symlink.py",
-    ".gitignore",
-    ".gitmodules"
 ]
 # Name of the directory where already-existing dotfiles should be moved.
 backup_dir = os.path.join(home_dir, "dotfiles-backup")
@@ -76,6 +76,8 @@ for filename in dotfiles:
     # Add dots to dotfile names.
     if IS_WINDOWS and filename == 'vim':  # .vim turns into vimfile in Windows
         dotfile = 'vimfiles'
+    elif filename == 'bin':
+        dotfile = 'bin'  # Just keep bin/ as is.
     else:
         dotfile = DOTFILE_PREFIX + filename
 
