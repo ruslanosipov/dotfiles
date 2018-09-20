@@ -35,14 +35,13 @@ IS_WINDOWS = sys.platform == 'win32'
 
 if IS_WINDOWS:
     HOME_ENV = 'USERPROFILE'
-    DOTFILE_PREFIX = '_'
 else:
     HOME_ENV = 'HOME'
-    DOTFILE_PREFIX = '.'
 
 home_dir = os.environ[HOME_ENV]
 # Name of the directory where dotfiles are located.
-dotfiles_dir = os.path.join(home_dir, DOTFILE_PREFIX + "dotfiles")
+dotfiles_dir = os.path.join(
+        home_dir, '_' if IS_WINDOWS else '.' + "dotfiles")
 # List of things we should ignore in the dotfiles directory.
 ignore = [
     ".git",
@@ -52,6 +51,12 @@ ignore = [
     "README.md",
     "symlink.py",
 ]
+# Windows needs very few of these, explicitly whitelist:
+windows_whitelist = {
+    'gvimrc': '_gvimrc',
+    'vim': 'vimfiles',
+    'vimrc': '_vimrc',
+}
 # Name of the directory where already-existing dotfiles should be moved.
 backup_dir = os.path.join(home_dir, "dotfiles-backup")
 
@@ -74,12 +79,16 @@ for filename in dotfiles:
         continue
 
     # Add dots to dotfile names.
-    if IS_WINDOWS and filename == 'vim':  # .vim turns into vimfile in Windows
-        dotfile = 'vimfiles'
-    elif filename == 'bin':
-        dotfile = 'bin'  # Just keep bin/ as is.
+    if IS_WINDOWS:
+        try:
+            dotfile = windows_whitelist[filename]
+        except KeyError:
+            continue
     else:
-        dotfile = DOTFILE_PREFIX + filename
+        if filename == 'bin':
+            dotfile = 'bin'  # Just keep bin/ as is.
+        else:
+            dotfile = '.' + filename
 
     # Assume that this is a directory and try to create a symlink.
     try:
