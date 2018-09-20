@@ -127,7 +127,7 @@ set laststatus=2
 set breakindent
 
 " Pretty soft break character.
-let &showbreak='↳ '
+let &showbreak='> '
 
 " => Custom commands ------------------------------------------------------ {{{1
 
