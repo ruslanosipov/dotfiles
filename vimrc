@@ -12,19 +12,14 @@
 
 filetype plugin indent on
 
-" Download and install vim-plug.
-if has('win32')
-  if empty(glob('$HOME/vimfiles/autoload/plug.vim'))
-    silent !curl -fLo \%USERPROFILE\%/vimfiles/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
-else
-  if empty(glob('$HOME/.vim/autoload/plug.vim'))
-    silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
+" Download and install vim-plug (cross platform).
+if empty(glob(
+    \ '$HOME/' . (has('win32') ? 'vimfiles' : '.vim') . '/autoload/plug.vim'))
+  execute '!curl -fLo ' .
+    \ (has('win32') ? '\%USERPROFILE\%/vimfiles' : '$HOME/.vim') . 
+    \ '/autoload/plug.vim --create-dirs ' .
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Load Google-specific .vimrc if it exists.
@@ -135,7 +130,7 @@ set laststatus=2
 set breakindent
 
 " Pretty soft break character.
-let &showbreak='> '
+let &showbreak = '> '
 
 " => Custom commands ------------------------------------------------------ {{{1
 
@@ -176,7 +171,7 @@ augroup filetype_gitcommit
   autocmd!
   autocmd Filetype gitcommit setlocal spell textwidth=72
 augroup END
-"
+
 " Enforce text width in VimWiki.
 augroup filetype_vimwiki
   autocmd!
