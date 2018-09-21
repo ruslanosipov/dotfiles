@@ -164,26 +164,6 @@ nnoremap <C-h> <C-W><C-H>
 nnoremap j gj
 nnoremap k gk
 
-" => Filetype-specific ---------------------------------------------------- {{{1
-
-" Linewrap for git commit messages.
-augroup filetype_gitcommit
-  autocmd!
-  autocmd Filetype gitcommit setlocal spell textwidth=72
-augroup END
-
-" Enforce text width in VimWiki.
-augroup filetype_vimwiki
-  autocmd!
-  autocmd Filetype vimwiki setlocal textwidth=80
-augroup END
-
-" Treat all HTML as Django templates.
-augroup html_django
-  autocmd!
-  au BufNewFile,BufRead *.html set ft=htmldjango
-augroup END
-
 " => Misc ----------------------------------------------------------------- {{{1
 
 " Use Unix as the standart file type.
