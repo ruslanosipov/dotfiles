@@ -169,12 +169,6 @@ nnoremap k gk
 " Use Unix as the standart file type.
 set ffs=unix,dos,mac
 
-" Ignore compiled files.
-set wildignore=*.o,*~,*.pyc,*.pyo
-
-" Ignore virtualenv directory.
-set wildignore+=env
-
 " Fold using {{{n, where n is fold level
 set foldmethod=marker
 
