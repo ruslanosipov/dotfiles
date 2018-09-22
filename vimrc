@@ -77,7 +77,7 @@ vnoremap ; :
 let mapleader = "\<Space>"
 
 " Use system clipboard.
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 " Enable wild menu (tab command autocompletion).
 set wildmenu
