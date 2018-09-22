@@ -41,7 +41,6 @@ Plug 'ervandew/supertab'                 " more powerful <tab>
 Plug 'junegunn/goyo.vim'                 " distraction-free writing
 Plug 'kien/ctrlp.vim'                    " <ctrl-p> to fuzzy search
 Plug 'mileszs/ack.vim'                   " ack integration
-Plug 'scrooloose/nerdtree'               " prettier netrw output
 Plug 'squarefrog/tomorrow-night.vim'     " colorscheme
 Plug 'tomtom/tcomment_vim'               " commenting helpers
 Plug 'tpope/vim-abolish'                 " change case on the fly
@@ -177,11 +176,6 @@ set foldmethod=marker
 " Fix backspace behavior across terminals.
 set bs=2
 
-" Hide NERDTree arrows in Windows.
-if has("win32") || has("win64") || has("win32unix")
-  let g:NERDTreeDirArrows = 0
-endif
-
 " Increase lower status bar height in diff mode.
 if &diff
   set cmdheight=2
@@ -191,10 +185,6 @@ endif
 au BufRead * normal zR
 
 " => Plugins configuration ------------------------------------------------ {{{1
-
-" NERDTree.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 " Gundo.
 let g:gundo_preview_bottom = 1
