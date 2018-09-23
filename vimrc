@@ -57,7 +57,7 @@ call plug#end()
 
 syntax on
 
-" Indentation settings.
+" Global indentation settings.
 set autoindent
 set expandtab
 set shiftwidth=4
@@ -94,10 +94,6 @@ set undodir=$HOME/.vim/undodir
 
 set background=light
 colorscheme PaperColor
-
-" Set terminal window title and set it back on exit.
-set title
-let &titleold = getcwd()
 
 " Shorten press ENTER to continue messages.
 set shortmess=atI
