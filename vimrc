@@ -27,6 +27,36 @@ if !empty(glob('$HOME/.vimrc.google'))
   source $HOME/.vimrc.google
 endif
 
+" => Sane defaults (from Neovim) ------------------------------------------ {{{1
+
+if !has('nvim')
+  syntax on
+
+  set autoindent
+  set autoread
+  set backspace=indent,eol,start
+  set belloff=all
+  set complete-=i
+  set display=lastline
+  set encoding=utf-8
+  set formatoptions=tcqj
+  set fsync
+  set history=10000
+  set hlsearch
+  set incsearch
+  set laststatus=2
+  set nocompatible
+  set ruler
+  set sessionoptions-=options
+  set showcmd
+  set sidescroll=1
+  set smarttab
+  set ttimeoutlen=50
+  set ttyfast
+  set viminfo+=!
+  set wildmenu
+endif
+
 " => vim-plug plugins ----------------------------------------------------- {{{1
 
 call plug#begin()
@@ -55,10 +85,7 @@ call plug#end()
 
 " => Editing -------------------------------------------------------------- {{{1
 
-syntax on
-
 " Global indentation settings.
-set autoindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -80,7 +107,6 @@ let mapleader = "\<Space>"
 set clipboard=unnamed,unnamedplus
 
 " Enable wild menu (tab command autocompletion).
-set wildmenu
 set wildmode=list:longest,full
 
 " Don't complain about unsaved files when switching buffers.
@@ -98,14 +124,8 @@ colorscheme PaperColor
 " Shorten press ENTER to continue messages.
 set shortmess=atI
 
-" Show last command in the status line.
-set showcmd
-
 " Highlight cursor line.
 set cursorline
-
-" Ruler (line, column and % at the right bottom).
-set ruler
 
 " Display line numbers if terminal is wide enough.
 if &co > 80
@@ -114,12 +134,6 @@ endif
 
 " Soft word wrap.
 set linebreak
-
-" Prettier display of long lines of text.
-set display+=lastline
-
-" Always show statusline.
-set laststatus=2
 
 " Make soft line breaks much better looking.
 set breakindent
@@ -149,10 +163,6 @@ nnoremap <Leader>a :Ack! <C-r><C-w><cr>
 set ignorecase
 set smartcase
 
-" Highlighted and incremental search (:noh to disable highlighting)
-set hlsearch
-set incsearch
-
 " Fast split navigation.
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -172,9 +182,6 @@ set ffs=unix,dos,mac
 set foldmethod=marker
 
 " => Fixes and hacks ------------------------------------------------------ {{{1
-
-" Fix backspace behavior across terminals.
-set bs=2
 
 " Increase lower status bar height in diff mode.
 if &diff
