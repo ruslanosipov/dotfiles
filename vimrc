@@ -149,6 +149,10 @@ nnoremap <Leader>a :Ack! <C-r><C-w><cr>
 set ignorecase
 set smartcase
 
+" Highlighted and incremental search (:noh to disable highlighting)
+set hlsearch
+set incsearch
+
 " Fast split navigation.
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
