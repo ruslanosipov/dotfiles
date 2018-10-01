@@ -38,11 +38,8 @@ if !has('nvim')
   set belloff=all
   set complete-=i
   set display=lastline
-  set encoding=utf-8
   set formatoptions=tcqj
-  set fsync
   set history=10000
-  set hlsearch
   set incsearch
   set laststatus=2
   set nocompatible
