@@ -157,4 +157,4 @@ eval "$(rbenv init -)"
 
 # Colorized less output.
 export LESS='-R'
-export LESSOPEN='|~/.lessfilter %s'
+export LESSOPEN='|~/bin/lessfilter %s'

@@ -188,6 +188,11 @@ endif
 " Unfold all files by default.
 au BufRead * normal zR
 
+" Fix easymotion target colors in a PaperColor theme.
+if g:colors_name ==# 'PaperColor'
+  hi EasyMotionTarget2First ctermbg=none ctermfg=red
+endif
+
 " => Plugins configuration ------------------------------------------------ {{{1
 
 " Gundo.
