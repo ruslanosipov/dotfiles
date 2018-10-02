@@ -13,22 +13,11 @@ There's a bare version which I use to make SSHing to different machines tolerabl
 
 ## Installation
 
-    git clone --recursive git@github.com:ruslanosipov/dotfiles.git .dotfiles
-    cd .dotfiles
-    ./symlink.sh
-    source ~/.bashrc
-    touch ~/.gitconfig.local
-    sudo apt-get install git vim ack-grep python-pip tree ranger
-    sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
-    pip install --user thefuck virtualenvwrapper
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+Run `./install.sh`.
 
 Replaced dotfiles are saved at `~/dotfiles-backup/`
 
     rm -rf ~/dotfiles-backup
-
-You may want to have `ctags` installed for Vim to work with tags.
 
 ### Git
 
