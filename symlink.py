@@ -31,17 +31,16 @@ import os
 import shutil
 import sys
 
-IS_WINDOWS = sys.platform == 'win32'
+IS_WINDOWS = sys.platform == "win32"
 
 if IS_WINDOWS:
-    HOME_ENV = 'USERPROFILE'
+  HOME_ENV = "USERPROFILE"
 else:
-    HOME_ENV = 'HOME'
+  HOME_ENV = "HOME"
 
 home_dir = os.environ[HOME_ENV]
 # Name of the directory where dotfiles are located.
-dotfiles_dir = os.path.join(
-        home_dir, ('_' if IS_WINDOWS else '.') + "dotfiles")
+dotfiles_dir = os.path.join(home_dir, ("_" if IS_WINDOWS else ".") + "dotfiles")
 # List of things we should ignore in the dotfiles directory.
 ignore = [
     ".git",
@@ -50,70 +49,70 @@ ignore = [
     "LICENSE",
     "README.md",
     "symlink.py",
+    "install.sh",
 ]
 # Windows needs very few of these, explicitly whitelist:
 windows_whitelist = {
-    'gvimrc': '_gvimrc',
-    'vim': 'vimfiles',
-    'vimrc': '_vimrc',
+    "gvimrc": "_gvimrc",
+    "vim": "vimfiles",
+    "vimrc": "_vimrc",
 }
 # Name of the directory where already-existing dotfiles should be moved.
 backup_dir = os.path.join(home_dir, "dotfiles-backup")
 
 # Create backup directory if needed.
 try:
-    os.mkdir(backup_dir)
-    print("Backup directory %s created." % backup_dir)
+  os.mkdir(backup_dir)
+  print("Backup directory %s created." % backup_dir)
 except OSError as backup_creation_err:
-    if backup_creation_err.errno == errno.EEXIST:
-        print("Backup directory %s already exists." % backup_dir)
-    else:
-        raise
+  if backup_creation_err.errno == errno.EEXIST:
+    print("Backup directory %s already exists." % backup_dir)
+  else:
+    raise
 
 # Generate a list of dotfiles from $dotfiles that we will need to link.
 dotfiles = os.listdir(dotfiles_dir)
 # For each file/directory in this list, attempt to symlink to the
 # home directory.
 for filename in dotfiles:
-    if filename in ignore:
+  if filename in ignore:
+    continue
+
+  # Add dots to dotfile names.
+  if IS_WINDOWS:
+    try:
+      dotfile = windows_whitelist[filename]
+    except KeyError:
+      continue
+  else:
+    if filename == "bin":
+      dotfile = "bin"  # Just keep bin/ as is.
+    else:
+      dotfile = "." + filename
+
+  # Assume that this is a directory and try to create a symlink.
+  try:
+    os.symlink(
+        os.path.join(dotfiles_dir, filename), os.path.join(home_dir, dotfile))
+    print("Linked %s to %s." % (os.path.join(dotfiles_dir, dotfile),
+                                os.path.join(home_dir, dotfile)))
+  except OSError as link_err:
+    if link_err.errno == errno.EEXIST:
+      # Check to see if this is a symlink, which means it has
+      # already been copied.
+      if os.path.islink(os.path.join(home_dir, dotfile)):
+        print("%s is already a symlink." % os.path.join(home_dir, dotfile))
         continue
 
-    # Add dots to dotfile names.
-    if IS_WINDOWS:
-        try:
-            dotfile = windows_whitelist[filename]
-        except KeyError:
-            continue
+      # This file already exists in the home directory,
+      # so we move the old file to the backup directory.
+      print("%s already exists in %s." % (dotfile, home_dir))
+      shutil.move(
+          os.path.join(home_dir, dotfile), os.path.join(backup_dir, dotfile))
+      print("Moved %s to %s" % (dotfile, backup_dir))
+      os.symlink(
+          os.path.join(dotfiles_dir, dotfile), os.path.join(home_dir, dotfile))
+      print("Linked %s to %s." % (os.path.join(dotfiles_dir, filename),
+                                  os.path.join(home_dir, dotfile)))
     else:
-        if filename == 'bin':
-            dotfile = 'bin'  # Just keep bin/ as is.
-        else:
-            dotfile = '.' + filename
-
-    # Assume that this is a directory and try to create a symlink.
-    try:
-        os.symlink(os.path.join(dotfiles_dir, filename),
-                   os.path.join(home_dir, dotfile))
-        print("Linked %s to %s." % (os.path.join(dotfiles_dir, dotfile),
-                                    os.path.join(home_dir, dotfile)))
-    except OSError as link_err:
-        if link_err.errno == errno.EEXIST:
-            # Check to see if this is a symlink, which means it has
-            # already been copied.
-            if os.path.islink(os.path.join(home_dir, dotfile)):
-                print("%s is already a symlink." % os.path.join(
-                        home_dir, dotfile))
-                continue
-
-            # This file already exists in the home directory,
-            # so we move the old file to the backup directory.
-            print("%s already exists in %s." % (dotfile, home_dir))
-            shutil.move(os.path.join(home_dir, dotfile),
-                        os.path.join(backup_dir, dotfile))
-            print("Moved %s to %s" % (dotfile, backup_dir))
-            os.symlink(os.path.join(dotfiles_dir, dotfile),
-                       os.path.join(home_dir, dotfile))
-            print("Linked %s to %s." % (os.path.join(dotfiles_dir, filename),
-                                        os.path.join(home_dir, dotfile)))
-        else:
-            raise
+      raise
