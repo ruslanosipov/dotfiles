@@ -8,9 +8,5 @@ vim/plugged/*
 # Ignore Neovim config since it's an OS-dependent symlink.
 vim/init.vim
 
-# Mutt account files
-mutt/account_*
-!mutt/account_template
-
 # Machine-specific changes to bashrc.
 bashrc.*

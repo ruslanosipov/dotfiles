@@ -18,7 +18,6 @@ There's a bare version which I use to make SSHing to different machines tolerabl
     ./symlink.sh
     source ~/.bashrc
     touch ~/.gitconfig.local
-    touch ~/.mutt/account_{1,2}
     sudo apt-get install git vim ack-grep python-pip tree ranger
     sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
     pip install --user thefuck virtualenvwrapper
@@ -41,18 +40,3 @@ Edit `~/.gitconfig.local` and add following:
 
 You can also add some user-specific settings in this file to override any
 settings specified in `.gitconfig`.
-
-### Mutt
-
-Mutt requires `abook` to be installed for address autocomplete. Also, you need
-to create `~/.mutt/account_1`, `~/.mutt/account_2` (more or less if you need
-to) files with your mailbox accounts.
-
-    set from              = "email@address.com"
-    set hostname          = address.com
-    set imap_pass         = "password"
-    set imap_user         = "email@address.com"
-    set realname          = "John Doe"
-
-Switch between accounts with `F2` - `FN`, you might have to adjust `~/.muttrc`
-to account for number of accounts you have.
