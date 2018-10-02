@@ -3,14 +3,6 @@
 This repository hosts my personal dotfiles in order to synchronize latest
 between machines. Feel free to fork the repo or use any files as it is.
 
-## Bare version
-
-There's a bare version which I use to make SSHing to different machines tolerable:
-
-    git clone -b bare-ssh --recursive git@github.com:ruslanosipov/dotfiles.git .dotfiles
-    . .dotfiles/symlink.py
-    vim +PluginInstall +qall
-
 ## Installation
 
 Run `./install.sh`.
