@@ -63,6 +63,7 @@ Plug 'Lokaltog/vim-easymotion'           " better move commands
 Plug 'NLKNguyen/papercolor-theme'        " colorscheme
 Plug 'ajh17/Spacegray.vim'               " colorscheme
 Plug 'altercation/vim-colors-solarized'  " colorscheme
+Plug 'brooth/far.vim'                    " global search and replace
 Plug 'christoomey/vim-tmux-navigator'    " better tmux integration
 Plug 'ervandew/supertab'                 " more powerful <tab>
 Plug 'junegunn/goyo.vim'                 " distraction-free writing
@@ -84,9 +85,9 @@ call plug#end()
 
 " Global indentation settings.
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Disable backups and .swp files.
 set nobackup
