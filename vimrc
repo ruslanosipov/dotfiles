@@ -200,6 +200,9 @@ endif
 let g:gundo_preview_bottom = 1
 nnoremap <F5> :GundoToggle<cr>
 
+" Vinegar.
+autocmd FileType netrw setl bufhidden=wipe
+
 " VimWiki.
 let g:vimwiki_list = [{
   \ 'path': '$HOME/Dropbox/wiki',
