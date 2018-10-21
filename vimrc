@@ -58,26 +58,27 @@ endif
 
 call plug#begin()
 
-Plug 'EinfachToll/DidYouMean'            " filename suggestions
-Plug 'Lokaltog/vim-easymotion'           " better move commands
-Plug 'NLKNguyen/papercolor-theme'        " colorscheme
-Plug 'ajh17/Spacegray.vim'               " colorscheme
-Plug 'altercation/vim-colors-solarized'  " colorscheme
-Plug 'brooth/far.vim'                    " global search and replace
-Plug 'christoomey/vim-tmux-navigator'    " better tmux integration
-Plug 'ervandew/supertab'                 " more powerful <tab>
-Plug 'junegunn/goyo.vim'                 " distraction-free writing
-Plug 'kien/ctrlp.vim'                    " <ctrl-p> to fuzzy search
-Plug 'mileszs/ack.vim'                   " ack integration
-Plug 'squarefrog/tomorrow-night.vim'     " colorscheme
-Plug 'tomtom/tcomment_vim'               " commenting helpers
-Plug 'tpope/vim-abolish'                 " change case on the fly
-Plug 'tpope/vim-repeat'                  " repeat everything
-Plug 'tpope/vim-surround'                " superchange surround commands
-Plug 'tpope/vim-unimpaired'              " pairs of helpful commands
-Plug 'tpope/vim-vinegar'                 " - to open netrw
-Plug 'vim-scripts/Gundo'                 " visualize the undo tree
-Plug 'vim-scripts/vimwiki'               " personal wiki
+Plug 'EinfachToll/DidYouMean'                    " filename suggestions
+Plug 'Lokaltog/vim-easymotion'                   " better move commands
+Plug 'brooth/far.vim', {'on': 'Far'}             " global search and replace
+Plug 'christoomey/vim-tmux-navigator'            " better tmux integration
+Plug 'ervandew/supertab'                         " more powerful <tab>
+Plug 'junegunn/goyo.vim', {'on': 'Goyo'}         " distraction-free writing
+Plug 'kien/ctrlp.vim'                            " <ctrl-p> to fuzzy search
+Plug 'mileszs/ack.vim', {'on': 'Ack'}            " ack integration
+Plug 'tomtom/tcomment_vim'                       " commenting helpers
+Plug 'tpope/vim-abolish'                         " change case on the fly
+Plug 'tpope/vim-repeat'                          " repeat everything
+Plug 'tpope/vim-surround'                        " better surround commands
+Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
+Plug 'tpope/vim-vinegar'                         " - to open netrw
+Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
+Plug 'vim-scripts/vimwiki'                       " personal wiki
+
+Plug 'NLKNguyen/papercolor-theme'                " colorscheme
+Plug 'ajh17/Spacegray.vim'                       " colorscheme
+Plug 'altercation/vim-colors-solarized'          " colorscheme
+Plug 'squarefrog/tomorrow-night.vim'             " colorscheme
 
 call plug#end()
 
