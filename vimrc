@@ -22,11 +22,6 @@ if empty(glob(
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Load Google-specific .vimrc if it exists.
-if !empty(glob('$HOME/.vimrc.google'))
-  source $HOME/.vimrc.google
-endif
-
 " => Sane defaults (from Neovim) ------------------------------------------ {{{1
 
 if !has('nvim')
@@ -211,3 +206,9 @@ let g:vimwiki_list = [{
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
 let g:vimwiki_dir_link = 'index'
+
+" => Google-specific ------------------------------------------------------ {{{1
+
+if !empty(glob('$HOME/.vimrc.google'))
+  source $HOME/.vimrc.google
+endif
