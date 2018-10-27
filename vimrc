@@ -206,6 +206,7 @@ let g:vimwiki_list = [{
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
 let g:vimwiki_dir_link = 'index'
+let g:vimwiki_folding = 'expr'
 
 " => Google-specific ------------------------------------------------------ {{{1
 
