@@ -110,6 +110,9 @@ set hidden
 set undofile
 set undodir=$HOME/.vim/undodir
 
+" Automatically change the working directory for the current file.
+set autochdir
+
 " => Looks ---------------------------------------------------------------- {{{1
 
 set background=light
@@ -181,9 +184,6 @@ set foldmethod=marker
 if &diff
   set cmdheight=2
 endif
-
-" Unfold all files by default.
-au BufRead * normal zR
 
 " Fix easymotion target colors in a PaperColor theme.
 if g:colors_name ==# 'PaperColor'
