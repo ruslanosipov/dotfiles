@@ -61,6 +61,7 @@ Plug 'ervandew/supertab'                         " more powerful <tab>
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}         " distraction-free writing
 Plug 'kien/ctrlp.vim'                            " <ctrl-p> to fuzzy search
 Plug 'mileszs/ack.vim', {'on': 'Ack'}            " ack integration
+Plug 'scrooloose/nerdtree'                       " file browser; netrw is buggy
 Plug 'tomtom/tcomment_vim'                       " commenting helpers
 Plug 'tpope/vim-abolish'                         " change case on the fly
 Plug 'tpope/vim-repeat'                          " repeat everything
