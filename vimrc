@@ -58,8 +58,8 @@ Plug 'Lokaltog/vim-easymotion'                   " better move commands
 Plug 'brooth/far.vim', {'on': 'Far'}             " global search and replace
 Plug 'christoomey/vim-tmux-navigator'            " better tmux integration
 Plug 'ervandew/supertab'                         " more powerful <tab>
+Plug 'junegunn/fzf', {'dir': '~/fzf', 'do': './install --all'}  " fuzzy search
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}         " distraction-free writing
-Plug 'kien/ctrlp.vim'                            " <ctrl-p> to fuzzy search
 Plug 'mileszs/ack.vim', {'on': 'Ack'}            " ack integration
 Plug 'tomtom/tcomment_vim'                       " commenting helpers
 Plug 'tpope/vim-abolish'                         " change case on the fly
@@ -69,6 +69,7 @@ Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
 Plug 'tpope/vim-vinegar'                         " - to open netrw
 Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
 Plug 'vim-scripts/vimwiki'                       " personal wiki
+Plug 'w0rp/ale', {'for': 'python'}               " async syntax checker
 
 Plug 'NLKNguyen/papercolor-theme'                " colorscheme
 Plug 'ajh17/Spacegray.vim'                       " colorscheme
@@ -196,7 +197,19 @@ if g:colors_name ==# 'PaperColor'
   hi EasyMotionTarget2First ctermbg=none ctermfg=red
 endif
 
+" Exit terminal mode with double Esc tap.
+if has('nvim')
+  tnoremap <esc><esc> <c-\><c-n>
+endif
+
+" Disable line numbers in terminal.
+au BufWinEnter * if &buftype == 'terminal' | set nu! | endif
+
 " => Plugins configuration ------------------------------------------------ {{{1
+
+" fzf
+let g:far#source = 'ag'
+nnoremap <c-p> :FZF<cr>
 
 " Gundo.
 let g:gundo_preview_bottom = 1
