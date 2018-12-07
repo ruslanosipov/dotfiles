@@ -60,13 +60,13 @@ Plug 'christoomey/vim-tmux-navigator'            " better tmux integration
 Plug 'ervandew/supertab'                         " more powerful <tab>
 Plug 'junegunn/fzf', {'dir': '~/fzf', 'do': './install --all'}  " fuzzy search
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}         " distraction-free writing
+Plug 'justinmk/vim-dirvish'                      " less buggy netrw alternative
 Plug 'mileszs/ack.vim', {'on': 'Ack'}            " ack integration
 Plug 'tomtom/tcomment_vim'                       " commenting helpers
 Plug 'tpope/vim-abolish'                         " change case on the fly
 Plug 'tpope/vim-repeat'                          " repeat everything
 Plug 'tpope/vim-surround'                        " better surround commands
 Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
-Plug 'tpope/vim-vinegar'                         " - to open netrw
 Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
 Plug 'vim-scripts/vimwiki'                       " personal wiki
 Plug 'w0rp/ale', {'for': 'python'}               " async syntax checker
@@ -112,7 +112,7 @@ set undofile
 set undodir=$HOME/.vim/undodir
 
 " Automatically change the working directory for the current file.
-set autochdir
+" set autochdir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
@@ -214,9 +214,6 @@ nnoremap <c-p> :FZF<cr>
 " Gundo.
 let g:gundo_preview_bottom = 1
 nnoremap <F5> :GundoToggle<cr>
-
-" Vinegar.
-autocmd FileType netrw setl bufhidden=wipe
 
 " VimWiki.
 let g:vimwiki_list = [{
