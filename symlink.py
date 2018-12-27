@@ -94,7 +94,7 @@ for filename in dotfiles:
   try:
     os.symlink(
         os.path.join(dotfiles_dir, filename), os.path.join(home_dir, dotfile))
-    print("Linked %s to %s." % (os.path.join(dotfiles_dir, dotfile),
+    print("Linked %s to %s." % (os.path.join(dotfiles_dir, filename),
                                 os.path.join(home_dir, dotfile)))
   except OSError as link_err:
     if link_err.errno == errno.EEXIST:
@@ -111,7 +111,7 @@ for filename in dotfiles:
           os.path.join(home_dir, dotfile), os.path.join(backup_dir, dotfile))
       print("Moved %s to %s" % (dotfile, backup_dir))
       os.symlink(
-          os.path.join(dotfiles_dir, dotfile), os.path.join(home_dir, dotfile))
+          os.path.join(dotfiles_dir, filename), os.path.join(home_dir, dotfile))
       print("Linked %s to %s." % (os.path.join(dotfiles_dir, filename),
                                   os.path.join(home_dir, dotfile)))
     else:

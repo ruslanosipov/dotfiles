@@ -33,3 +33,5 @@
 	path = ~/.gitconfig.local
 [google]
 	uplink = false
+[credential]
+	helper = cache
