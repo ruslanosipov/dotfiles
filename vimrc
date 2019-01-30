@@ -177,6 +177,9 @@ tnoremap <c-h> <c-w><c-h>
 nnoremap j gj
 nnoremap k gk
 
+" Accidentally hitting capital K doesn't open manpages.
+nnoremap <s-k> k
+
 " => Misc ----------------------------------------------------------------- {{{1
 
 " Use Unix as the standart file type.
