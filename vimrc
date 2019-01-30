@@ -205,6 +205,9 @@ endif
 " Disable line numbers in terminal.
 au BufWinEnter * if &buftype == 'terminal' | set nu! | endif
 
+" Jinja2 templates are Django files.
+au BufRead,BufNewFile *.jinja2 set ft=django
+
 " => Plugins configuration ------------------------------------------------ {{{1
 
 " fzf
