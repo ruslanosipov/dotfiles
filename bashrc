@@ -158,3 +158,7 @@ eval "$(rbenv init -)"
 # Colorized less output.
 export LESS='-R'
 export LESSOPEN='|~/bin/lessfilter %s'
+
+function todo() {
+  vim -c VimwikiIndex -c "VimwikiGoto Google/todo" -c "normal zR"
+}
