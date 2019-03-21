@@ -116,10 +116,10 @@ set undodir=$HOME/.vim/undodir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=light
-colorscheme PaperColor
-hi StatusLineTerm ctermbg=24 ctermfg=254 guibg=#004f87 guifg=#e4e4e4
-hi StatusLineTermNC ctermbg=252 ctermfg=238 guibg=#d0d0d0 guifg=#444444
+set background=dark
+colorscheme tomorrow-night
+" hi StatusLineTerm ctermbg=24 ctermfg=254 guibg=#004f87 guifg=#e4e4e4
+" hi StatusLineTermNC ctermbg=252 ctermfg=238 guibg=#d0d0d0 guifg=#444444
 
 " Shorten press ENTER to continue messages.
 set shortmess=atI
@@ -210,6 +210,9 @@ au BufWinEnter * if &buftype == 'terminal' | set nu! | endif
 
 " Jinja2 templates are Django files.
 au BufRead,BufNewFile *.jinja2 set ft=django
+
+" Open all folds when entering Vim.
+set nofoldenable
 
 " => Plugins configuration ------------------------------------------------ {{{1
 

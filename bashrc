@@ -159,6 +159,7 @@ eval "$(rbenv init -)"
 export LESS='-R'
 export LESSOPEN='|~/bin/lessfilter %s'
 
+# Open my TODO list.
 function todo() {
-  vim -c VimwikiIndex -c "VimwikiGoto Google/todo" -c "normal zR"
+  vim -c "silent VimwikiIndex" -c "silent VimwikiGoto Google/todo"
 }
