@@ -71,6 +71,9 @@ Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
 Plug 'vim-scripts/vimwiki'                       " personal wiki
 Plug 'w0rp/ale', {'for': 'python'}               " async syntax checker
 
+Plug 'prabirshrestha/async.vim'                  " async LSP support
+Plug 'prabirshrestha/vim-lsp'                    " LSP support
+
 Plug 'NLKNguyen/papercolor-theme'                " colorscheme
 Plug 'ajh17/Spacegray.vim'                       " colorscheme
 Plug 'altercation/vim-colors-solarized'          " colorscheme
