@@ -236,8 +236,9 @@ let g:vimwiki_list = [{
   \ 'template_path': '$HOME/Dropbox/wiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_folding = 'expr'
+let g:vimwiki_dir_link = 'index'    " Open /index instead of directory listing.
+let g:vimwiki_folding = 'expr'      " Enable folding.
+autocmd FileType vimwiki set spell  " Enable spelling.
 
 " => Google-specific ------------------------------------------------------ {{{1
 
