@@ -217,6 +217,9 @@ au BufRead,BufNewFile *.jinja2 set ft=django
 " Open all folds when entering Vim.
 set nofoldenable
 
+" Don't wrap lines in Vimwiki (to fix the way shortened URLs are displayed).
+autocmd FileType vimwiki set nowrap
+
 " => Plugins configuration ------------------------------------------------ {{{1
 
 " fzf
