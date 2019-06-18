@@ -232,8 +232,8 @@ nnoremap <F5> :GundoToggle<cr>
 
 " VimWiki.
 let g:vimwiki_list = [{
-  \ 'path': '$HOME/Dropbox/wiki',
-  \ 'template_path': '$HOME/Dropbox/wiki/templates',
+  \ 'path': '$HOME/Drive/wiki',
+  \ 'template_path': '$HOME/Drive/wiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
 let g:vimwiki_dir_link = 'index'    " Open /index instead of directory listing.
