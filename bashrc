@@ -163,3 +163,6 @@ export LESSOPEN='|~/bin/lessfilter %s'
 function todo() {
   vim -c "silent VimwikiIndex" -c "silent VimwikiGoto Google/todo"
 }
+
+# Allow Vim to use xclipboard during SSH/tmux sessions.
+export DISPLAY=:0.0
