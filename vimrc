@@ -119,8 +119,8 @@ set undodir=$HOME/.vim/undodir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=dark
-colorscheme tomorrow-night
+set background=light
+colorscheme PaperColor
 " hi StatusLineTerm ctermbg=24 ctermfg=254 guibg=#004f87 guifg=#e4e4e4
 " hi StatusLineTermNC ctermbg=252 ctermfg=238 guibg=#d0d0d0 guifg=#444444
 
