@@ -10,3 +10,7 @@ vim/init.vim
 
 # Machine-specific changes to bashrc.
 bashrc.*
+
+# Everything but i3 config.
+config/*
+!config/i3/*
