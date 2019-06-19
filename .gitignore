@@ -5,6 +5,9 @@ vim/.netrwhist
 vim/autoload/*
 vim/plugged/*
 
+# Ignore Vim spelling corrections.
+vim/spell/*
+
 # Ignore Neovim config since it's an OS-dependent symlink.
 vim/init.vim
 
