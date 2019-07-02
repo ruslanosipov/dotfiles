@@ -137,7 +137,7 @@ focus_follows_mouse no
 
 exec compton
 
-# Additional status bar indicator.
+# Additional status bar indicator
 exec dex -ae i3
 
 # lock the screen with command-shift-o
@@ -146,5 +146,8 @@ bindsym $mod+Shift+o exec i3lock -c 000000 && xset dpms force off
 # lock the screen on a timer
 exec ~/bin/startup/autolocker
 
-# Mount Google Drive via rclone.
+# Mount Google Drive via rclone
 exec rclone mount remote: $HOME/Drive
+
+# Clipboard manager
+exec --no-startup-id clipit
