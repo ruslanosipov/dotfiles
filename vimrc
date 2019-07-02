@@ -70,6 +70,7 @@ Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
 Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
 Plug 'vim-scripts/vimwiki'                       " personal wiki
 Plug 'w0rp/ale', {'for': 'python'}               " async syntax checker
+Plug 'leafgarland/typescript-vim'                " typescript syntax
 
 Plug 'prabirshrestha/async.vim'                  " async LSP support
 Plug 'prabirshrestha/vim-lsp'                    " LSP support
