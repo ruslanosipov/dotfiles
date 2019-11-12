@@ -1,6 +1,12 @@
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
+if [ -z "$user_bashrc_already_run" ]; then
+  user_bashrc_already_run=1
+else
+  return
+fi
+
 # => Constants ------------------------------------------------------------ {{{1
 
 if [ `uname` == "Darwin" ]; then
@@ -149,8 +155,6 @@ fi
 # Fuzzy file autocomplete.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Add "fuck" alias.
-eval $(thefuck --alias)
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init -)"
@@ -158,11 +162,6 @@ eval "$(rbenv init -)"
 # Colorized less output.
 export LESS='-R'
 export LESSOPEN='|~/bin/lessfilter %s'
-
-# Open my TODO list.
-function todo() {
-  vim -c "silent VimwikiIndex" -c "silent VimwikiGoto Google/todo"
-}
 
 # Allow Vim to use xclipboard during SSH/tmux sessions.
 export DISPLAY=:0.0
