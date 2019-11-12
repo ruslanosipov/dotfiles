@@ -69,11 +69,13 @@ Plug 'tpope/vim-surround'                        " better surround commands
 Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
 Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
 Plug 'vim-scripts/vimwiki'                       " personal wiki
-Plug 'w0rp/ale', {'for': 'python'}               " async syntax checker
+Plug 'w0rp/ale', {'for': ['java', 'python']}     " async syntax checker
 Plug 'leafgarland/typescript-vim'                " typescript syntax
 
 Plug 'prabirshrestha/async.vim'                  " async LSP support
 Plug 'prabirshrestha/vim-lsp'                    " LSP support
+Plug 'prabirshrestha/asyncomplete.vim'           " async autocomplete
+Plug 'prabirshrestha/asyncomplete-lsp.vim'       " async LSP autocomplete
 
 Plug 'NLKNguyen/papercolor-theme'                " colorscheme
 Plug 'ajh17/Spacegray.vim'                       " colorscheme
@@ -155,8 +157,6 @@ command! Bd :bp | :sp | :bn | :bd
 nnoremap <Leader>] <C-]>
 nnoremap <Leader>i <C-i>
 nnoremap <Leader>o <C-o>
-nnoremap <Leader>p :CtrlP<cr>
-nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>r :redraw!<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>a :Ack! <C-r><C-w><cr>
@@ -202,6 +202,7 @@ endif
 " Fix easymotion target colors in a PaperColor theme.
 if g:colors_name ==# 'PaperColor'
   hi EasyMotionTarget2First ctermbg=none ctermfg=red
+  hi EasyMotionTarget2Second ctermbg=none ctermfg=red
 endif
 
 " Exit terminal mode with double Esc tap.
@@ -210,7 +211,7 @@ if has('nvim')
 endif
 
 " Disable line numbers in terminal.
-au BufWinEnter * if &buftype == 'terminal' | set nu! | endif
+au CursorMoved * if &buftype == 'terminal' | set nonumber | endif
 
 " Jinja2 templates are Django files.
 au BufRead,BufNewFile *.jinja2 set ft=django
@@ -224,8 +225,17 @@ autocmd FileType vimwiki set nowrap
 " => Plugins configuration ------------------------------------------------ {{{1
 
 " fzf
-let g:far#source = 'ag'
+let $FZF_DEFAULT_COMMAND = 'list_all_files'
 nnoremap <c-p> :FZF<cr>
+
+
+" ack -> ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" :Far -> ag
+let g:far#source = 'ag'
 
 " Gundo.
 let g:gundo_preview_bottom = 1
