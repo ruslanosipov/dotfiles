@@ -147,9 +147,9 @@ bindsym $mod+Shift+o exec i3lock -c 000000 && xset dpms force off
 exec ~/bin/startup/autolocker
 
 # Mount Google Drive via rclone
-exec rclone mount drive: $HOME/.Drive
+exec rclone mount --vfs-cache-mode full drive: $HOME/.Drive
 exec fusermount -uz $HOME/Drive
-exec rclone mount --allow-other drive-cache: $HOME/Drive
+exec rclone mount --vfs-cache-mode full --allow-other drive-cache: $HOME/Drive
 
 # Clipboard manager
 exec --no-startup-id clipit
