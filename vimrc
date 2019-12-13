@@ -186,6 +186,9 @@ nnoremap <s-k> k
 
 " => Misc ----------------------------------------------------------------- {{{1
 
+" Hide terminal windows in active buffer lists (for ]b and [b navigation).
+autocmd TerminalOpen * if bufwinnr('') > 0 | setlocal nobuflisted | endif
+
 " Use Unix as the standart file type.
 set ffs=unix,dos,mac
 
