@@ -38,8 +38,8 @@ fi
 
 # History settings.
 HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=100000
-HISTFILESIZE=200000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 
 # Write history after every command.
 export PROMPT_COMMAND='history -a'
