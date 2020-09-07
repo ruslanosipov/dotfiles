@@ -51,7 +51,7 @@ endif
 
 " => vim-plug plugins ----------------------------------------------------- {{{1
 
-call plug#begin()
+silent! call plug#begin()
 
 Plug 'EinfachToll/DidYouMean'                    " filename suggestions
 Plug 'Lokaltog/vim-easymotion'                   " better move commands
@@ -77,6 +77,7 @@ Plug 'prabirshrestha/vim-lsp'                    " LSP support
 Plug 'prabirshrestha/asyncomplete.vim'           " async autocomplete
 Plug 'prabirshrestha/asyncomplete-lsp.vim'       " async LSP autocomplete
 
+Plug 'Zabanaa/neuromancer.vim'                   " colorscheme
 Plug 'NLKNguyen/papercolor-theme'                " colorscheme
 Plug 'ajh17/Spacegray.vim'                       " colorscheme
 Plug 'altercation/vim-colors-solarized'          " colorscheme
@@ -122,8 +123,8 @@ set undodir=$HOME/.vim/undodir
 
 " => Looks ---------------------------------------------------------------- {{{1
 
-set background=light
-colorscheme PaperColor
+set background=dark
+colorscheme neuromancer
 " hi StatusLineTerm ctermbg=24 ctermfg=254 guibg=#004f87 guifg=#e4e4e4
 " hi StatusLineTermNC ctermbg=252 ctermfg=238 guibg=#d0d0d0 guifg=#444444
 
