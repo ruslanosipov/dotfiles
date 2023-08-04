@@ -68,7 +68,7 @@ Plug 'tpope/vim-repeat'                          " repeat everything
 Plug 'tpope/vim-surround'                        " better surround commands
 Plug 'tpope/vim-unimpaired'                      " pairs of helpful commands
 Plug 'vim-scripts/Gundo', {'on': 'GundoToggle'}  " visualize the undo tree
-Plug 'vim-scripts/vimwiki'                       " personal wiki
+Plug 'vimwiki/vimwiki'                           " personal wiki
 Plug 'w0rp/ale', {'for': ['java', 'python']}     " async syntax checker
 Plug 'leafgarland/typescript-vim'                " typescript syntax
 
@@ -247,8 +247,8 @@ nnoremap <F5> :GundoToggle<cr>
 
 " VimWiki.
 let g:vimwiki_list = [{
-  \ 'path': '$HOME/Drive/wiki',
-  \ 'template_path': '$HOME/Drive/wiki/templates',
+  \ 'path': '$HOME/Drive/vimwiki/wiki',
+  \ 'template_path': '$HOME/Drive/vimwiki/wiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'}]
 let g:vimwiki_dir_link = 'index'    " Open /index instead of directory listing.
